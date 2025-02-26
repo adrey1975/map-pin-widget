@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Map Widget</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+    <style>
+      /* Container holding the map */
+      .map-container {
+        position: relative;      /* Allows absolute positioning of pins within it */
+        width: 1500px;           
+        height: 1000px;
+        margin: 0 auto;          /* Center on the page */
+        background: #f0f0f0;     /* Neutral background color */
+      }
+
+      /* The map image itself */
+      .map-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;       
+        display: block;
+        border-radius: 10px;
+      }
+
+      /* Overlay to shade the map and other pins */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        z-index: 900;  /* Sits above the background but below highlighted elements */
+      }
+
+      /* Begin button styling */
+        #beginButton {
+            display: block;
+            margin-left: auto;
+            margin-right: 10px;
+            border-radius: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            /* Optional: add hover effect */
+            transition: background-color 0.2s;
+        }
+
+        #beginButton:hover {
+            background-color: #0056b3;
+        }
+
+      /* Pin icon styling */
+      .map-pin {
+        position: absolute;     
+        width: 135px;
+        height: 135px;
+        background: url('pin-icon.png') no-repeat center center / contain;
+        cursor: pointer;
+        transition: transform 0.2s; 
+      }
+
+      /* Special class for the person pin to keep it above the overlay */
+      .person-pin {
+        z-index: 1001; /* Above the overlay */
+      }
+
+      /* Hover effect */
+      .map-pin:hover {
+        transform: scale(1.1);
+      }
+
+      /* Default Info panel styling (for non-person pins) */
+      .info-panel {
+        position: absolute;
+        width: 180px;
+        min-height: 80px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #fff;
+        border: 2px solid #ccc;
+        display: none; /* Hidden by default */
+        z-index: 1001;  /* Ensure it is on top of the overlay */
+        font-family: 'Poppins', sans-serif;
+      }
+
+      /* Arrow for non-person pins (pointing down) */
+      .info-panel::before {
+        content: "";
+        position: absolute;
+        bottom: -10px;   
+        left: 20px;      
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #ccc;
+      }
+      .info-panel::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;    
+        left: 20px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #fff;
+      }
+
+      /* Modified styles for the person pin's info panel */
+      .info-panel.person-info {
+        position: absolute;
+        width: 500px;
+        min-height: 50px;
+        padding: 10px;
+        background: #fff;
+        border: 2px solid #ccc;
+        display: none; /* Hidden by default */
+        font-family: 'Poppins', sans-serif;
+      }
+      /* Arrow for person pin's info panel (pointing left) */
+      .info-panel.person-info::before {
+        content: "";
+        position: absolute;
+        top: 20px; /* Adjust as needed */
+        left: -20px;   /* Place arrow on left edge */
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #fff;
+        z-index: 1002; /* Ensure it is above the person pin */
+      }
+      .info-panel.person-info::after {
+        content: "";
+        position: absolute;
+        top: 21px;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid #fff;
+      }
+
+      /* Heading styling */
+      h1 {
+        position: relative;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Map Widget</h1>
+
+    <!-- Map container -->
+    <div class="map-container">
+      <!-- Map image -->
+      <img src="Images/north-america-continent-america-326281.jpg" alt="Map" class="map-image" />
+
+      <!-- Overlay to shade background -->
+      <div class="overlay"></div>
+
+      <!-- Person giving instructions (highlighted) -->
+      <img
+        src="Images/person-pin.svg"
+        class="map-pin person-pin" 
+        style="top: 40%; left: 3%;" 
+        data-region="North America" 
+        data-disasters="Hello there! Your objective is to explore the map and learn about different disasters.">
+
+      <!-- Other pins (these will be dimmed by the overlay) -->
+      <img
+        src="map-and-pins/lightning-pin.svg"
+        class="map-pin" 
+        style="top: 40%; left: 30%;" 
+        data-region="Florida" 
+        data-disasters="Hurricanes, Tropical Storms">
+
+      <img
+        src="map-and-pins/drought-pin.svg"
+        class="map-pin" 
+        style="top: 55%; left: 55%;" 
+        data-region="Midwest" 
+        data-disasters="Tornadoes">
+
+      <img
+        src="map-and-pins/earthquake-pin.svg"
+        class="map-pin" 
+        style="top: 55%; left: 21%;" 
+        data-region="California" 
+        data-disasters="Earthquakes, Wildfires">
+
+      <img
+        src="map-and-pins/fire-pin.svg"
+        class="map-pin" 
+        style="top: 55%; left: 40%;" 
+        data-region="California" 
+        data-disasters="Earthquakes, Wildfires">
+
+      <img
+        src="map-and-pins/volcano-pin.svg"
+        class="map-pin" 
+        style="top: 45%; left: 35%;" 
+        data-region="California" 
+        data-disasters="Earthquakes, Wildfires">
+
+      <img
+        src="map-and-pins/wind-pin.svg"
+        class="map-pin" 
+        style="top: 35%; left: 60%;" 
+        data-region="California" 
+        data-disasters="Earthquakes, Wildfires">
+
+      <img
+        src="map-and-pins/flood-pin.svg"
+        class="map-pin" 
+        style="top: 80%; left: 50%;" 
+        data-region="California" 
+        data-disasters="Earthquakes, Wildfires">
+
+      <!-- Info panel for displaying pin instructions -->
+      <div class="info-panel" id="infoPanel"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Get all pins, the info panel, and the overlay element
+      const pins = document.querySelectorAll('.map-pin');
+      const infoPanel = document.getElementById('infoPanel');
+      const overlay = document.querySelector('.overlay');
+
+      // Function to update and show the info panel near a pin element
+      function showInfoPanel(pin) {
+        const region = pin.getAttribute('data-region');
+        const disasters = pin.getAttribute('data-disasters');
+        const isPerson = pin.classList.contains('person-pin');
+
+        // Build the info panel content
+        let contentHTML = `<h3>${region}</h3>
+          <p><strong>Disasters:</strong> ${disasters}</p>`;
+
+        // If it's the person pin, add a "Begin" button and extra class for styling.
+        if (isPerson) {
+          contentHTML += `<button id="beginButton">Begin</button>`;
+          infoPanel.classList.add('person-info');
+        } else {
+          infoPanel.classList.remove('person-info');
+        }
+        infoPanel.innerHTML = contentHTML;
+
+        // Position the info panel based on pin type
+        const pinTopPercent = parseFloat(pin.style.top);
+        const pinLeftPercent = parseFloat(pin.style.left);
+        let finalTop, finalLeft;
+        if (isPerson) {
+          // For the person pin, position the panel to the right of the pin.
+          finalTop = pinTopPercent; // same vertical alignment
+          finalLeft = pinLeftPercent + 10; // shift to the right (adjust as needed)
+        } else {
+          // Default positioning: slightly above the pin.
+          const offsetTop = pinTopPercent - 14;
+          const offsetLeft = pinLeftPercent + 1;
+          finalTop = Math.max(0, offsetTop);
+          finalLeft = Math.max(0, offsetLeft);
+        }
+        infoPanel.style.top = finalTop + '%';
+        infoPanel.style.left = finalLeft + '%';
+
+        // Display the info panel
+        infoPanel.style.display = 'block';
+
+        // If it's the person pin, attach event listener to the Begin button.
+        if (isPerson) {
+          const beginButton = document.getElementById('beginButton');
+          beginButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Hide the overlay once the user is ready to begin.
+            overlay.style.display = 'none';
+            // Optionally hide the info panel too:
+            infoPanel.style.display = 'none';
+          });
+        }
+      }
+
+      // Add click event listener to all pins
+      pins.forEach(pin => {
+        pin.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent the click from bubbling up
+          showInfoPanel(pin);
+        });
+      });
+
+      // Hide the info panel if user clicks outside any pin or the info panel
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.map-pin') && !event.target.closest('#infoPanel')) {
+          infoPanel.style.display = 'none';
+        }
+      });
+
+      // When the page loads, automatically show the person pin's info panel.
+      window.addEventListener('load', () => {
+        const personPin = document.querySelector('.person-pin');
+        if (personPin) {
+          showInfoPanel(personPin);
+        }
+      });
+    </script>
+  </body>
+</html>
