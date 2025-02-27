@@ -234,7 +234,7 @@
         class="map-pin person-pin" 
         style="top: 40%; left: 3%;" 
         data-region="Hi there!" 
-        data-disasters="Explore the map and click on the pins. Answer a question at each pin to earn a badge on your logbook! Click 'Begin' to start.">
+        data-disasters="Explore the map and click on the pins. Answer a question at each pin to earn a badge on your logbook! Click <b>'Begin'</b> to start.">
 
       <!-- Map pins -->
       <img
@@ -248,9 +248,9 @@
         src="map-and-pins/drought-pin.svg"
         class="map-pin" 
         style="top: 55%; left: 55%;" 
-        data-region="Midwest" 
-        data-disasters="Tornadoes"
-        data-image="nhi/fire.png">
+        data-region="Droughts" 
+        data-disasters="How can we help prevent drought in the Enviorment?"
+        data-image="nhi/Drought.png">
 
       <img
         src="map-and-pins/earthquake-pin.svg"
@@ -309,7 +309,7 @@
         let contentHTML = `<h3>${region}</h3>
           <p>${disasters}</p>`;
         if (hazardImage) {
-          contentHTML += `<img src="${hazardImage}" alt="Hazard Image" style="display: block; margin: 0 auto; width: 300px; height: 300px;">`;
+          contentHTML += `<img src="${hazardImage}" alt="Hazard Image" style="display: block; margin: 20px auto; width: 500px; height: 500px;">`;
         }
         if (isPerson) {
           contentHTML += `<button id="beginButton">Begin</button>`;
