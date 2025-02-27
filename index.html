@@ -27,6 +27,16 @@
         border-radius: 10px;
       }
 
+      /* Logbook */
+      .logbook {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+      }
+
       /* Overlay to shade the map (hidden by default) */
       .overlay {
         display: none;
@@ -225,6 +235,10 @@
       <!-- Map image -->
       <img src="Images/north-america-continent-america-326281.jpg" alt="Map" class="map-image" />
 
+      <!--Logbook-->
+      <img src="/log-and-stamps/logbook.svg" alt="Logbook" class="logbook">
+
+
       <!-- Overlay to shade background -->
       <div class="overlay"></div>
 
@@ -234,7 +248,7 @@
         class="map-pin person-pin" 
         style="top: 40%; left: 3%;" 
         data-region="Hi there!" 
-        data-disasters="Explore the map and click on the pins. Answer a question at each pin to earn a badge on your logbook! Click <b>'Begin'</b> to start.">
+        data-disasters="Explore the map and click on the pins. Answer a question at each pin to earn a badge on your <b>Resilience Logbook</b>! Click <b>'Begin'</b> to start.">
 
       <!-- Map pins -->
       <img
