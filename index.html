@@ -30,16 +30,11 @@
       /* Logbook */
       .logbook {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 100px;
-        height: 100px;
+        top: -80px;
+        left: 10px;
+        width: 500px;
+        height: 500px;
         cursor: pointer;
-        transition: transform 0.2s;
-      }
-
-      .logbook:hover {
-        transform: scale(1.1);
       }
 
       /* Overlay to shade the map (hidden by default) */
@@ -312,10 +307,11 @@
 
     <!-- JavaScript -->
     <script>
-      // Get all pins, the info panel, and the overlay element
+      // Get all pins, the info panel, and the overlay element and logbook element
       const pins = document.querySelectorAll('.map-pin');
       const infoPanel = document.getElementById('infoPanel');
       const overlay = document.querySelector('.overlay');
+      const logbook = document.querySelector('.logbook');
 
       // Function to update and show the info panel
       function showInfoPanel(pin) {
