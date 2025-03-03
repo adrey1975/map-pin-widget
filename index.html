@@ -12,8 +12,8 @@
       /* Container holding the map */
       .map-container {
         position: relative;
-        width: 1500px;
-        height: 1000px;
+        width: 1600px;
+        height: 1200px;
         margin: 0 auto;
         background: #f0f0f0;
       }
@@ -25,16 +25,6 @@
         object-fit: cover;
         display: block;
         border-radius: 10px;
-      }
-
-      /* Logbook */
-      .logbook {
-        position: absolute;
-        top: -80px;
-        left: 10px;
-        width: 500px;
-        height: 500px;
-        cursor: pointer;
       }
 
       /* Overlay to shade the map (hidden by default) */
@@ -56,7 +46,8 @@
         margin-left: auto;
         margin-right: 10px;
         border-radius: 10px;
-        padding: 5px 10px;
+        padding: 10px 20px; /* Button Size Adjustment */
+        font-size: 18px;
         background-color: #007bff;
         color: #fff;
         border: none;
@@ -87,27 +78,28 @@
       /* Info panel styling */
       .info-panel {
         position: absolute;
-        width: 800px;
-        min-height: 800px;
+        width: 1000px;
+        min-height: 1000px;
         padding: 10px;
         border-radius: 10px;
         background: #fff;
         border: 2px solid #ccc;
-        display: none;
+        display: block;
         z-index: 1001;
         font-family: 'Poppins', sans-serif;
       }
 
       /* Image inside info panel styling */
       .info-panel img, .info-panel .info-panel-image {
-        width: 100%;
-        height: auto;
+        width: 80%;
         display: block;
+        height: auto;
         margin: 10px auto;
+        border: 2px solid #0056b3;
         border-radius: 10px;
       }
 
-      /* Arrow styling for non-person pins */
+      /* Arrow styling for pins */
       .info-panel::before {
         content: "";
         position: absolute;
@@ -180,6 +172,22 @@
         font-family: 'Poppins', sans-serif;
       }
 
+      h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        position: relative;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      p {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        position: relative;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+      }
+
       /* Responsive Breakpoints for Computer Screens */
       /* Max width 1400px */
       @media (max-width: 1400px) {
@@ -196,7 +204,7 @@
 
         /* image inside info panel */
         .info-panel img, .info-panel .info-panel-image {
-          max-width: 450px;
+          max-width: 900px;
         }
       }
 
@@ -215,10 +223,11 @@
 
         /* image inside info panel */
         .info-panel img, .info-panel .info-panel-image {
-          max-width: 400px;
+          max-width: 600px;
         }
       }
 
+      /* Max width 1000px */
       @media (max-width: 1000px) {
         .map-pin {
           max-width: 80px;
@@ -233,7 +242,7 @@
 
         /* image inside info panel */
         .info-panel img, .info-panel .info-panel-image {
-          max-width: 350px;
+          max-width: 400px;
         }
       }
 
@@ -286,10 +295,6 @@
       <!-- Map image -->
       <img src="Images/north-america-continent-america-326281.jpg" alt="Map" class="map-image" />
 
-      <!--Logbook-->
-      <img src="/log-and-stamps/logbook.svg" alt="Logbook" class="logbook">
-
-
       <!-- Overlay to shade background -->
       <div class="overlay"></div>
 
@@ -306,8 +311,9 @@
         src="map-and-pins/lightning-pin.svg"
         class="map-pin" 
         style="top: 40%; left: 30%;" 
-        data-region="Florida" 
-        data-disasters="Hurricanes, Tropical Storms">
+        data-region="Thunderstorms" 
+        data-disasters="How can we safeguard against lightning storms in the Enviorment?"
+        data-image="nhi/Lightning.png">
 
       <img
         src="map-and-pins/drought-pin.svg"
@@ -321,36 +327,41 @@
         src="map-and-pins/earthquake-pin.svg"
         class="map-pin" 
         style="top: 55%; left: 21%;" 
-        data-region="California" 
-        data-disasters="Earthquakes, Wildfires">
+        data-region="Extreme Vibrations" 
+        data-disasters="How can safeguard against earthquakes in the Enviorment?"
+        data-image="nhi/Vibrations.png">
 
       <img
         src="map-and-pins/fire-pin.svg"
         class="map-pin" 
         style="top: 55%; left: 40%;" 
-        data-region="California" 
-        data-disasters="Earthquakes, Wildfires">
+        data-region="Wildfires" 
+        data-disasters="How can we help prevent wildfires in the Enviorment?"
+        data-image="nhi/fires.png">
 
       <img
         src="map-and-pins/volcano-pin.svg"
         class="map-pin" 
         style="top: 45%; left: 35%;" 
-        data-region="California" 
-        data-disasters="Earthquakes, Wildfires">
+        data-region="Volcano Eruptions" 
+        data-disasters="How can we safeguard against Volcano eruptions?"
+        data-image="nhi/Volcano.png">
 
       <img
         src="map-and-pins/wind-pin.svg"
         class="map-pin" 
         style="top: 35%; left: 60%;" 
-        data-region="California" 
-        data-disasters="Earthquakes, Wildfires">
+        data-region="Strong Winds" 
+        data-disasters="How can we safeguard against strong winds?"
+        data-image="nhi/Winds.png">
 
       <img
         src="map-and-pins/flood-pin.svg"
         class="map-pin" 
         style="top: 80%; left: 50%;" 
-        data-region="California" 
-        data-disasters="Earthquakes, Wildfires">
+        data-region="Flooding" 
+        data-disasters="How can we safeguard against flooding?"
+        data-image="nhi/Floods.png">
 
       <!-- Info panel for displaying pin instructions -->
       <div class="info-panel" id="infoPanel"></div>
