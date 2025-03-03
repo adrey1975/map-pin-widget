@@ -9,6 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
     <style>
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #cfcfcf83;
+      }
       /* Container holding the map */
       .map-container {
         position: relative;
@@ -172,11 +179,18 @@
         font-family: 'Poppins', sans-serif;
       }
 
+      h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        position: relative;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+      }
+
       h3 {
         font-size: 1.5em;
         margin-bottom: 10px;
         position: relative;
-        text-align: center;
         font-family: 'Poppins', sans-serif;
       }
 
@@ -188,6 +202,52 @@
         font-family: 'Poppins', sans-serif;
       }
 
+      /* Form styling */
+      /* Center the question form inside the info panel */
+      #questionForm {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      label {
+        width: 400px;
+        display: inline-block;
+        text-align: left;
+        font-size: 1.3em;
+      }
+
+      .radio-option  {
+        margin: 10px 0; /* Spacing between options */
+      }
+
+      /* Spacing between radio buttons and label */
+      .radio-option input[type="radio"] {
+        margin-right: 10px;
+        accent-color: #007bff;
+        transform: scale(1.5);
+      }
+
+      /* Style the submit button to match your begin button */
+      #submitAnswer {
+        display: inline-block;
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px 20px; /* Matches the Begin button */
+        font-size: 18px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        transition: background-color 0.2s;
+      }
+
+      #submitAnswer:hover {
+        background-color: #0056b3;
+      }
+     
+     
       /* Responsive Breakpoints for Computer Screens */
       /* Max width 1400px */
       @media (max-width: 1400px) {
@@ -312,8 +372,12 @@
         class="map-pin" 
         style="top: 40%; left: 30%;" 
         data-region="Thunderstorms" 
-        data-disasters="How can we safeguard against lightning storms in the Enviorment?"
-        data-image="nhi/Lightning.png">
+        data-disasters="Lightning can occur during thunderstorms."
+        data-image="nhi/Lightning.png"
+        data-question="What should you when there is lightning?"
+        data-option1="Stay indoors"
+        data-option2="Hide under a tree"
+        data-option3="Go swimming">
 
       <img
         src="map-and-pins/drought-pin.svg"
@@ -381,10 +445,15 @@
         const disasters = pin.getAttribute('data-disasters');
         const isPerson = pin.classList.contains('person-pin');
         const hazardImage = pin.getAttribute('data-image');
+        const question = pin.getAttribute('data-question');
+        const option1 = pin.getAttribute('data-option1');
+        const option2 = pin.getAttribute('data-option2');
+        const option3 = pin.getAttribute('data-option3');
 
         // Build the info panel content
-        let contentHTML = `<h3>${region}</h3>
+        let contentHTML = `<h2>${region}</h2>
           <p>${disasters}</p>`;
+
         if (hazardImage) {
           contentHTML += `<img src="${hazardImage}" alt="Hazard Image" class="info-panel-image" />`;
         }
@@ -394,6 +463,28 @@
         } else {
           infoPanel.classList.remove('person-info');
         }
+
+        // If there is a question add radio buttons
+        if (question) {
+          contentHTML += `<form id="questionForm">
+            <h3>${question}</h3>
+            <div class="radio-option">
+              <input type="radio" name="answer" value="1" id="option1">
+              <label for="option1">${option1}</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="answer" value="2" id="option2">
+              <label for="option2">${option2}</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="answer" value="3" id="option3">
+              <label for="option3">${option3}</label>
+            </div>
+            <button id="submitAnswer" type="submit">Submit</button>
+          </form>`;
+        }
+
+        // Update the info panel content
         infoPanel.innerHTML = contentHTML;
 
         // Show the overlay
