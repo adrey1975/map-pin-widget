@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -9,95 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
     <style>
-
       /* HWCS Styles */
-      <style>
-            :root {
-              --blue: rgb(92, 113, 242);
-              --blue-dark: rgb(51, 56, 118);
-              --blue-light: rgb(162, 169, 242);
-              --gray: rgb(197, 197, 197);
-              --gray-dark: rgb(124, 124, 124);
-              --gray-light: rgb(237, 237, 237);
-              --off-black: rgb(36, 36, 36);
-              --off-white: rgb(242, 242, 242);
-              --teal: rgb(134, 213, 224);
-              --teal-dark: rgb(100, 160, 168);
-              --teal-light: rgb(204, 238, 242);
-            }
+      :root {
+        --blue: rgb(92, 113, 242);
+        --blue-dark: rgb(51, 56, 118);
+        --blue-light: rgb(162, 169, 242);
+        --gray: rgb(197, 197, 197);
+        --gray-dark: rgb(124, 124, 124);
+        --gray-light: rgb(237, 237, 237);
+        --off-black: rgb(36, 36, 36);
+        --off-white: rgb(242, 242, 242);
+        --teal: rgb(134, 213, 224);
+        --teal-dark: rgb(100, 160, 168);
+        --teal-light: rgb(204, 238, 242);
+      }
 
-            body {
-              background-color: var(--off-white);
-              font-family: "Poppins", sans-serif;
-            }
-
-            .button {
-              background-color: var(--button-background-color);
-              border: var(--button-border-color) .1em solid;
-              border-radius: .2em;
-              box-shadow: inset 0 .1em 0 rgba(255, 255, 255, 0.15), 0 .1em .1em rgba(0, 0, 0, 0.075);
-              color: var(--button-color);
-              font-family: inherit;
-              padding: .2em .4em;
-              transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            }
-
-            .button:active {
-              box-shadow: none;
-            }
-
-            .button:hover {
-              background-color: var(--button-hover-background-color);
-              cursor: pointer;
-            }
-
-            .button-blue {
-              --button-color: white;
-              --button-background-color: var(--blue);
-              --button-border-color: var(--blue-dark);
-              --button-hover-background-color: var(--blue-dark);
-            }
-
-            .button-dark {
-              --button-color: white;
-              --button-background-color: var(--off-black);
-              --button-border-color: black;
-              --button-hover-background-color: black;
-            }
-
-            .button-light {
-              --button-color: black;
-              --button-background-color: var(--gray-light);
-              --button-border-color: var(--gray-dark);
-              --button-hover-background-color: var(--gray);
-            }
-
-            .button-teal {
-              --button-color: black;
-              --button-background-color: var(--teal);
-              --button-border-color: var(--teal-dark);
-              --button-hover-background-color: var(--teal-dark);
-            }
-
-      /* Adrian's CSS */
-      /* General styles */
       body {
         background-color: var(--off-white);
         font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
-        
       }
-      /* Container holding the map */
+
+      /* Button Styles */
+      .button {
+        background-color: var(--button-background-color);
+        border: var(--button-border-color) .1em solid;
+        border-radius: .2em;
+        box-shadow: inset 0 .1em 0 rgba(255, 255, 255, 0.15), 0 .1em .1em rgba(0, 0, 0, 0.075);
+        color: var(--button-color);
+        font-family: inherit;
+        padding: .2em .4em;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      .button:active {
+        box-shadow: none;
+      }
+      .button:hover {
+        background-color: var(--button-hover-background-color);
+        cursor: pointer;
+      }
+      .button-blue {
+        --button-color: white;
+        --button-background-color: var(--blue);
+        --button-border-color: var(--blue-dark);
+        --button-hover-background-color: var(--blue-dark);
+      }
+      .button-dark {
+        --button-color: white;
+        --button-background-color: var(--off-black);
+        --button-border-color: black;
+        --button-hover-background-color: black;
+      }
+      .button-light {
+        --button-color: black;
+        --button-background-color: var(--gray-light);
+        --button-border-color: var(--gray-dark);
+        --button-hover-background-color: var(--gray);
+      }
+      .button-teal {
+        --button-color: black;
+        --button-background-color: var(--teal);
+        --button-border-color: var(--teal-dark);
+        --button-hover-background-color: var(--teal-dark);
+      }
+
+      /* Map and General Layout */
       .map-container {
         position: relative;
         width: 100%;
-        max-width: 2000px; /* your intended maximum */
+        max-width: 2000px;
         margin: 0 auto;
         background: #f0f0f0;
+        margin-top: 120px;
       }
-
-      /* The map image itself */
       .map-image {
         width: 100%;
         height: 100%;
@@ -105,8 +90,6 @@
         display: block;
         border-radius: 10px;
       }
-
-      /* Overlay to shade the map (hidden by default) */
       .overlay {
         display: none;
         position: absolute;
@@ -118,14 +101,12 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 900;
       }
-
-      /* Begin button styling */
       #beginButton {
         display: block;
         margin-left: auto;
         margin-right: 10px;
         border-radius: 10px;
-        padding: 10px 20px; /* Button Size Adjustment */
+        padding: 10px 20px;
         font-size: 18px;
         background-color: rgb(92, 113, 242);
         color: #fff;
@@ -136,27 +117,46 @@
       }
       #beginButton:hover {
         background-color: rgb(162, 169, 242);
-        
       }
 
-      /* Default styling for info panels (both normal and person-specific) */
-      .info-panel,
-      .info-panel.person-info {
+      /* Info Wrapper & Panels */
+      .info-wrapper {
         position: absolute;
-        width: 80%;         /* Use a percentage so it scales with the container */
-        max-width: 500px;   /* But don't allow it to be too wide */
+        display: none;
+        z-index: 1001;
+      }
+      .info-wrapper .info-panel {
+        position: relative;
+        width: 80%;
+        max-width: 500px;
         min-height: 50px;
         padding: 10px;
         border-radius: 10px;
         background: #fff;
         border: 2px solid rgb(92, 113, 242);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        display: block;
-        z-index: 1001;
         font-family: 'Poppins', sans-serif;
+        /* Ensure main panel stays on top */
+        z-index: 2;
+      }
+      .info-wrapper .secondary-info-panel {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 10px);
+        width: 40%;
+        max-width: 300px;
+        min-height: 50px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #fff;
+        border: 2px solid rgb(92, 113, 242);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        font-family: 'Poppins', sans-serif;
+        display: none;
+        z-index: 1;
       }
 
-      /* Pin icon styling */
+      /* Pin Styling */
       .map-pin {
         position: absolute;
         width: 150px;
@@ -169,24 +169,49 @@
         z-index: 1001;
         width: 200px;
         height: 200px;
-  
-     
       }
       .map-pin:hover {
         transform: scale(1.1);
       }
 
-      /* Image inside info panel styling */
-      .info-panel img, .info-panel .info-panel-image {
+      /* Image container for hover overlay */
+      .image-container {
+        position: relative;
         width: 80%;
-        display: block;
-        height: auto;
         margin: 10px auto;
         border: 2px solid rgb(92, 113, 242);
         border-radius: 10px;
+        overflow: hidden;
+      }
+      .info-panel-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(128, 128, 128, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2em;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .image-container:hover .image-overlay {
+        opacity: 1;
+      }
+      .image-container:hover .info-panel-image {
+        filter: grayscale(50%);
       }
 
-      /* Arrow styling for pins */
+      /* Arrow styling for info panels */
       .info-panel::before {
         content: "";
         position: absolute;
@@ -209,20 +234,17 @@
         border-right: 8px solid transparent;
         border-top: 8px solid #fff;
       }
-
-
-      /* Arrow for person pin's info panel (pointing left) */
       .info-panel.person-info::before {
         content: "";
         position: absolute;
-        top: 40px; /* Adjust as needed */
-        left: -20px;   /* Place arrow on left edge */
+        top: 40px;
+        left: -20px;
         width: 0;
         height: 0;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
         border-right: 10px solid #fff;
-        z-index: 1002; /* Ensure it is above the person pin */
+        z-index: 1002;
       }
       .info-panel.person-info::after {
         content: "";
@@ -235,14 +257,12 @@
         border-bottom: 8px solid transparent;
         border-right: 8px solid #fff;
       }
-
-        /* Hide arrows for the info panels except the npc */
       .info-panel:not(.person-info)::before,
-        .info-panel:not(.person-info)::after {
+      .info-panel:not(.person-info)::after {
         display: none;
       }
 
-      /* Heading styling */
+      /* Headings and Text */
       h1 {
         position: relative;
         text-align: center;
@@ -251,62 +271,60 @@
         margin-bottom: 10px;
         margin-top: 30px;
       }
-
       h2 {
         font-size: 2em;
         margin-bottom: 10px;
-        position: relative;
-        font-family: 'Poppins', sans-serif;
         text-align: center;
+        font-family: 'Poppins', sans-serif;
       }
-
       h3 {
         font-size: 1.5em;
         margin-bottom: 10px;
-        position: relative;
         font-family: 'Poppins', sans-serif;
       }
-
       p {
         font-size: 1.3em;
         margin-bottom: 10px;
-        position: relative;
         text-align: center;
         font-family: 'Poppins', sans-serif;
       }
-
-      /* Form styling */
-      /* Center the question form inside the info panel */
       #questionForm {
         display: block;
         margin: 0 auto;
         text-align: center;
       }
 
+    /* Radio Button Styling */
+      .info-panel label {
+        width: auto; /* Let the label adjust to its container */
+        text-align: left; /* or left, depending on your design */
+        display: inline-block;
+        font-size: 1.3em;
+      }  
       label {
-        width: 400px;
+        width: auto;
         display: inline-block;
         text-align: left;
         font-size: 1.3em;
       }
+      .radio-option {
+        margin: 10px 0;
+        margin-left: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: left;
 
-      .radio-option  {
-        margin: 10px 0; /* Spacing between options */
       }
-
-      /* Spacing between radio buttons and label */
       .radio-option input[type="radio"] {
         margin-right: 10px;
         accent-color: rgb(92, 113, 242);
         transform: scale(1.5);
       }
-
-      /* Style the submit button to match your begin button */
       #submitAnswer {
         display: inline-block;
         margin-top: 10px;
         border-radius: 10px;
-        padding: 10px 20px; /* Matches the Begin button */
+        padding: 10px 20px;
         font-size: 18px;
         background-color: rgb(92, 113, 242);
         color: #fff;
@@ -315,150 +333,92 @@
         font-family: 'Poppins', sans-serif;
         transition: background-color 0.2s;
       }
-
       #submitAnswer:hover {
         background-color: rgb(162, 169, 242);
       }
-     
-     
+
       /* Media Queries for Responsiveness */
-
-      /* For screens up to 1400px wide */
       @media (max-width: 1400px) {
-        .map-container {
-          max-width: 1200px;
-        }
-        .info-panel,
-        .info-panel.person-info {
-          max-width: 450px;
-        }
-        .map-pin {
-          width: 120px;
-          height: 120px;
-        }
-        .person-pin {
-          width: 160px;
-          height: 160px;
-        }
-        #questionForm label {
-          width: 400px;
-        }
+        .map-container { max-width: 1200px; }
+        .info-wrapper .info-panel { max-width: 450px;}
+        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-pin { width: 120px; height: 120px; }
+        .person-pin { width: 160px; height: 160px; }
+        h1 { font-size: 2.5em; }
+        h2 { font-size: 1.8em; }
+        h3 { font-size: 1.3em; }
+        p { font-size: 1.1em; }
+        label { font-size: 1.2em; }
       }
-
-      /* For screens up to 1200px wide */
       @media (max-width: 1200px) {
-        .map-container {
-          max-width: 1000px;
-        }
-        .info-panel,
-        .info-panel.person-info {
-          max-width: 400px;
-        }
-        .map-pin {
-          width: 100px;
-          height: 100px;
-        }
-        .person-pin {
-          width: 140px;
-          height: 140px;
-        }
-        #questionForm label {
-          width: 300px;
-        }
+        .map-container { max-width: 1000px; }
+        .info-wrapper .info-panel { max-width: 400px; }
+        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-pin { width: 100px; height: 100px; }
+        .person-pin { width: 140px; height: 140px; }
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.6em; }
+        h3 { font-size: 1.2em; }
+        p { font-size: 1em; }
+        label { font-size: 1.1em; }
       }
-
-      /* For screens up to 1000px wide */
       @media (max-width: 1000px) {
-        .map-container {
-          max-width: 800px;
-        }
-        .info-panel,
-        .info-panel.person-info {
-          max-width: 350px;
-        }
-        .map-pin {
-          width: 80px;
-          height: 80px;
-        }
-        .person-pin {
-          width: 120px;
-          height: 120px;
-        }
-        #questionForm label {
-          width: 200px;
-        }
+        .map-container { max-width: 800px; }
+        .info-wrapper .info-panel { max-width: 350px; }
+        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-pin { width: 80px; height: 80px; }
+        .person-pin { width: 120px; height: 120px; }
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.4em; }
+        h3 { font-size: 1.1em; }
+        p { font-size: 0.9em; }
+        label { font-size: 1em; }
       }
-
-      /* For screens up to 800px wide */
       @media (max-width: 800px) {
-        .map-container {
-          max-width: 600px;
-        }
-        .info-panel,
-        .info-panel.person-info {
-          max-width: 300px;
-        }
-        .map-pin {
-          width: 60px;
-          height: 60px;
-        }
-        .person-pin {
-          width: 100px;
-          height: 100px;
-        }
-        #questionForm label {
-          width: 150px;
-        }
+        .map-container { max-width: 600px; }
+        .info-wrapper .info-panel { max-width: 300px; }
+        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-pin { width: 60px; height: 60px; }
+        .person-pin { width: 100px; height: 100px; }
+        h1 { font-size: 1.8em; }
+        h2 { font-size: 1.2em; }
+        h3 { font-size: 1em; }
+        p { font-size: 0.8em; }
+        label { font-size: 0.9em; }
       }
-
-      /* For screens up to 500px wide */
       @media (max-width: 500px) {
-        .map-container {
-          max-width: 400px;
-        }
-        .info-panel,
-        .info-panel.person-info {
-          max-width: 200px;
-        }
-        .map-pin {
-          width: 40px;
-          height: 40px;
-        }
-        .person-pin {
-          width: 80px;
-          height: 80px;
-        }
-        #questionForm label {
-          width: 100px;
-        }
+        .map-container { max-width: 400px; }
+        .info-wrapper .info-panel { max-width: 200px; }
+        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-pin { width: 40px; height: 40px; }
+        .person-pin { width: 80px; height: 80px; }
+        h1 { font-size: 1.8em; }
+        h2 { font-size: 1.2em; }
+        h3 { font-size: 1em; }
+        p { font-size: 0.8em; }
+        label { font-size: 0.9em; }
       }
-
-
-      
-
     </style>
+
+    
   </head>
   <body>
-
     <h1>Eco-Resilience Explorer</h1>
-
-    <!-- Map container -->
     <div class="map-container">
       <!-- Map image -->
       <img src="/m-n-pv2/map.svg" alt="Map" class="map-image" />
-
       <!-- Overlay to shade background -->
       <div class="overlay"></div>
 
-      <!-- Person giving instructions (highlighted) -->
+      <!-- Person pin -->
       <img
         src="Images/hwcs-pin-bigger.svg"
         class="map-pin person-pin" 
         style="top: 10%; left: 0%;" 
         data-region="Hi there!" 
-        data-disasters="Explore the map and click on the pins. Answer a question at each pin to earn a badge on your <b>Resilience Logbook</b>! Click <b>'Begin'</b> to start.">
+        data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
 
-      <!-- Map pins -->
+      <!-- Other map pins -->
       <img
         src="m-n-pv2/lightning-pin.svg"
         class="map-pin" 
@@ -466,72 +426,80 @@
         data-region="Thunderstorms" 
         data-disasters="Lightning can occur during thunderstorms."
         data-image="nhi/Lightning.png"
-        data-question="What should you when there is lightning?"
+        data-question="What should you do when there is lightning?"
         data-option1="Stay indoors"
         data-option2="Hide under a tree"
         data-option3="Go swimming">
-
       <img
         src="m-n-pv2/drought-pin.svg"
         class="map-pin" 
-        style="top: 55%; left: 55%;" 
+        style="top: 50%; left: 35%;" 
         data-region="Droughts" 
-        data-disasters="How can we help prevent drought in the Enviorment?"
+        data-disasters="Droughts can happen when"
         data-image="nhi/Drought.png">
-
       <img
         src="m-n-pv2/earthquake-pin.svg"
         class="map-pin" 
-        style="top: 55%; left: 21%;" 
+        style="top: 45%; left: 55%;" 
         data-region="Extreme Vibrations" 
-        data-disasters="How can safeguard against earthquakes in the Enviorment?"
+        data-disasters="How can we safeguard against earthquakes in the Environment?"
         data-image="nhi/Vibrations.png">
-
       <img
         src="m-n-pv2/fire-pin.svg"
         class="map-pin" 
-        style="top: 55%; left: 40%;" 
+        style="top: 35%; left: 10%;" 
         data-region="Wildfires" 
-        data-disasters="How can we help prevent wildfires in the Enviorment?"
+        data-disasters="How can we help prevent wildfires in the Environment?"
         data-image="nhi/fires.png">
-
       <img
         src="m-n-pv2/volcano-pin.svg"
         class="map-pin" 
-        style="top: 45%; left: 35%;" 
+        style="top: 65%; left: 13%;" 
         data-region="Volcano Eruptions" 
-        data-disasters="How can we safeguard against Volcano eruptions?"
-        data-image="nhi/Volcano.png">
-
+        data-disasters=""
+        data-image="nhi/Volcano.png"
+        data-question="How do air purifiers help protect people during a volcanic eruption?"
+        data-option1="Removing ash from the air"
+        data-option2="Blocking the hot lava"
+        data-option3="They change the color of the ash">
       <img
         src="m-n-pv2/wind-pin.svg"
         class="map-pin" 
-        style="top: 35%; left: 60%;" 
+        style="top: 25%; left: 60%;" 
         data-region="Strong Winds" 
-        data-disasters="How can we safeguard against strong winds?"
-        data-image="nhi/Winds.png">
-
+        data-disasters="Strong winds can occur during severe weather events like thunderstorms, hurricanes, and tornadoes. They are common in coastal areas, especially along the Gulf Coast during hurricanes, and in regions like the central United States, where tornadoes often form."
+        data-image="nhi/Winds.png"
+        data-question="What is one thing you can build in your community to protect against strong winds?"
+        data-option1="A bigger house"
+        data-option2="A tree house"
+        data-option3="A storm shelter underground">
       <img
         src="m-n-pv2/flood-pin.svg"
         class="map-pin" 
-        style="top: 80%; left: 50%;" 
+        style="top: 63%; left: 58%;" 
         data-region="Flooding" 
-        data-disasters="How can we safeguard against flooding?"
-        data-image="nhi/Floods.png">
+        data-disasters="Flooding occurs when water covers land that is usually dry, often in low-lying areas, along riverbanks, coastal regions, or urban settings with poor drainage. It can result from heavy rainfall, rapid snowmelt, tsunamis, hurricanes, or when natural drainage systems are overwhelmed by the water volume."
+        data-image="nhi/Floods.png"
+        data-question="How can homes be eco-resilient and prepare against flooding?"
+        data-option1="Build homes on stilts"
+        data-option2="Plant trees"
+        data-option3="Build homes in low-lying areas">
 
-      <!-- Info panel for displaying pin instructions -->
-      <div class="info-panel" id="infoPanel"></div>
+      <!-- Info Wrapper containing both panels -->
+      <div class="info-wrapper" id="infoWrapper">
+        <div class="info-panel" id="infoPanel"></div>
+        <div class="secondary-info-panel" id="secondaryInfoPanel"></div>
+      </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-      // Get all pins, the info panel, and the overlay element and logbook element
+      // Get pins, overlay, and the info wrapper elements
       const pins = document.querySelectorAll('.map-pin');
+      const infoWrapper = document.getElementById('infoWrapper');
       const infoPanel = document.getElementById('infoPanel');
       const overlay = document.querySelector('.overlay');
-      const logbook = document.querySelector('.logbook');
 
-      // Function to update and show the info panel
+      // Function to update and show the info panels within the wrapper
       function showInfoPanel(pin) {
         const region = pin.getAttribute('data-region');
         const disasters = pin.getAttribute('data-disasters');
@@ -542,12 +510,15 @@
         const option2 = pin.getAttribute('data-option2');
         const option3 = pin.getAttribute('data-option3');
 
-        // Build the info panel content
+        // Build main panel content
         let contentHTML = `<h2>${region}</h2>
           <p>${disasters}</p>`;
 
         if (hazardImage) {
-          contentHTML += `<img src="${hazardImage}" alt="Hazard Image" class="info-panel-image" />`;
+          contentHTML += `<div class="image-container">
+              <img src="${hazardImage}" alt="Hazard Image" class="info-panel-image" />
+              <div class="image-overlay"><span>Click for more info</span></div>
+            </div>`;
         }
         if (isPerson) {
           contentHTML += `<button id="beginButton">Begin</button>`;
@@ -556,7 +527,6 @@
           infoPanel.classList.remove('person-info');
         }
 
-        // If there is a question add radio buttons
         if (question) {
           contentHTML += `<form id="questionForm">
             <h3>${question}</h3>
@@ -576,40 +546,44 @@
           </form>`;
         }
 
-        // Update the info panel content
+        // Update main panel and show overlay
         infoPanel.innerHTML = contentHTML;
-
-        // Show the overlay
         overlay.style.display = 'block';
 
-        // Position the info panel differently based on the pin type
+        // Position the info wrapper relative to the clicked pin
         if (isPerson) {
-          // For the person pin, position the panel relative to the pin
           const pinTopPercent = parseFloat(pin.style.top);
           const pinLeftPercent = parseFloat(pin.style.left);
-          const finalTop = pinTopPercent; // same vertical alignment
-          const finalLeft = pinLeftPercent + 10; // shift to the right (adjust as needed)
-          infoPanel.style.top = finalTop + '%';
-          infoPanel.style.left = finalLeft + '%';
-          infoPanel.style.transform = 'none'; // remove centering transform
+          infoWrapper.style.top = pinTopPercent + '%';
+          infoWrapper.style.left = (pinLeftPercent + 10) + '%';
+          infoWrapper.style.transform = 'none';
         } else {
-          // For other pins, center the info panel over the map
-          infoPanel.style.top = '50%';
-          infoPanel.style.left = '50%';
-          infoPanel.style.transform = 'translate(-50%, -50%)';
+          infoWrapper.style.top = '50%';
+          infoWrapper.style.left = '50%';
+          infoWrapper.style.transform = 'translate(-50%, -50%)';
         }
+        infoWrapper.style.display = 'block';
 
-        // Display the info panel
-        infoPanel.style.display = 'block';
-
-        // If it's the person pin, attach event listener to the Begin button.
+        // Attach event to Begin button for person pin
         if (isPerson) {
           const beginButton = document.getElementById('beginButton');
           beginButton.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Hide both the overlay and the info panel when "Begin" is clicked.
             overlay.style.display = 'none';
-            infoPanel.style.display = 'none';
+            infoWrapper.style.display = 'none';
+            document.getElementById('secondaryInfoPanel').style.display = 'none';
+          });
+        }
+
+        // Attach click event on image container to reveal the secondary panel
+        const imageContainer = infoPanel.querySelector('.image-container');
+        if (imageContainer) {
+          imageContainer.style.cursor = 'pointer';
+          imageContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const secPanel = document.getElementById('secondaryInfoPanel');
+            secPanel.innerHTML = `<p>Additional information about ${region}.</p>`;
+            secPanel.style.display = 'block';
           });
         }
       }
@@ -618,19 +592,28 @@
       pins.forEach(pin => {
         pin.addEventListener('click', (event) => {
           event.stopPropagation();
+          document.getElementById('secondaryInfoPanel').style.display = 'none';
           showInfoPanel(pin);
         });
       });
 
-      // Hide the info panel and overlay if user clicks outside
+      // Hide panels if clicking outside the info wrapper and pins
       document.addEventListener('click', (event) => {
-        if (!event.target.closest('.map-pin') && !event.target.closest('#infoPanel')) {
-          infoPanel.style.display = 'none';
+        if (!event.target.closest('.map-pin') &&
+            !event.target.closest('#infoWrapper')) {
+          infoWrapper.style.display = 'none';
           overlay.style.display = 'none';
         }
       });
 
-      // When the page loads, automatically show the person pin's info panel.
+      // Hide secondary panel if clicking image overlay a second time
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.image-container')) {
+            document.getElementById('secondaryInfoPanel').style.display = 'none';
+            }
+        });
+
+      // On page load, show the person pin's info panel automatically
       window.addEventListener('load', () => {
         const personPin = document.querySelector('.person-pin');
         if (personPin) {
