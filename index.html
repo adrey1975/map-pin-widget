@@ -418,45 +418,57 @@
         data-region="Hi there!" 
         data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
 
-      <!-- Other map pins -->
+      <!-- Natrual disaster map pins -->
       <img
         src="m-n-pv2/lightning-pin.svg"
         class="map-pin" 
         style="top: 40%; left: 30%;" 
-        data-region="Thunderstorms" 
-        data-disasters="Lightning can occur during thunderstorms."
+        data-region="Lightning Strikes" 
+        data-disasters="Lightning happens when a lot of electricity builds up in the sky and then is released all at once. It usually occurs during storms when clouds fill with electricity, but sometimes lightning can happen during a volcanic eruption when ash in the air creates sparks, and it tends to strike the tallest things like trees and buildings."
         data-image="nhi/Lightning.png"
-        data-question="What should you do when there is lightning?"
-        data-option1="Stay indoors"
-        data-option2="Hide under a tree"
-        data-option3="Go swimming">
+        data-question="Lightning can cause fires. What is one way to protect homes from lightning strikes?"
+        data-option1="Paint the house blue to blend in with the sky"
+        data-option2="Install lightning rods on the roof"
+        data-option3="Plant more trees around the house to absorb the lightning">
       <img
         src="m-n-pv2/drought-pin.svg"
         class="map-pin" 
         style="top: 50%; left: 35%;" 
         data-region="Droughts" 
-        data-disasters="Droughts can happen when"
-        data-image="nhi/Drought.png">
+        data-disasters="Droughts are most common in dry areas where it rarely rains, like deserts or regions with long, hot seasons. They can also happen in places with regular rainfall if the rain stops for a long time. Droughts can cause water shortages, crop failures, and wildfires."
+        data-image="nhi/Drought.png"
+        data-question="Which eco-resilient feature collects rainwater from roofs to use during a drought?"
+        data-option1="A swimming pool"
+        data-option2="A water slide"
+        data-option3="A rain barrel">
       <img
         src="m-n-pv2/earthquake-pin.svg"
         class="map-pin" 
         style="top: 45%; left: 55%;" 
         data-region="Extreme Vibrations" 
-        data-disasters="How can we safeguard against earthquakes in the Environment?"
-        data-image="nhi/Vibrations.png">
+        data-disasters="Extreme vibrations are caused by earthquakes when huge pieces of the Earth, called tectonic plates, move and bump into each other. Earthquakes usually occur along cracks in the Earth, known as fault lines, which are often found near the edges of big oceans."
+        data-image="nhi/Vibrations.png"
+        data-question="What is one way buildings can be protected during earthquakes?"
+        data-option1="By installing a lot of windows"
+        data-option2="Use shock absorbing foundations"
+        data-option3="Using heavy roof materials">
       <img
         src="m-n-pv2/fire-pin.svg"
         class="map-pin" 
         style="top: 35%; left: 10%;" 
-        data-region="Wildfires" 
-        data-disasters="How can we help prevent wildfires in the Environment?"
-        data-image="nhi/fires.png">
+        data-region="Fires" 
+        data-disasters="Fires can be ignited by lightning strikes, downed power lines from storms, or even volcanic eruptions—especially when the weather is extremely hot and dry. Flames can rapidly spread across forests, grasslands, or other dry areas."
+        data-image="nhi/fires.png"
+        data-question="What type of building materials are suggested for fire-resistant homes?"
+        data-option1="Bamboo and rubber"
+        data-option2="Glass and plastic"
+        data-option3="Brick, metal and concrete">
       <img
         src="m-n-pv2/volcano-pin.svg"
         class="map-pin" 
         style="top: 65%; left: 13%;" 
         data-region="Volcano Eruptions" 
-        data-disasters=""
+        data-disasters="Volcanic eruptions occur when magma from deep inside the Earth builds up pressure and bursts out of a volcano. This release sends hot lava, ash, and gases into the air, sometimes causing damage to nearby areas. Volcanic eruptions can also trigger other hazards like landslides, tsunamis, and earthquakes."
         data-image="nhi/Volcano.png"
         data-question="How do air purifiers help protect people during a volcanic eruption?"
         data-option1="Removing ash from the air"
@@ -472,7 +484,7 @@
         data-question="What is one thing you can build in your community to protect against strong winds?"
         data-option1="A bigger house"
         data-option2="A tree house"
-        data-option3="A storm shelter underground">
+        data-option3="A storm shelter">
       <img
         src="m-n-pv2/flood-pin.svg"
         class="map-pin" 
@@ -492,6 +504,8 @@
       </div>
     </div>
 
+
+    <!--JavaScript-->
     <script>
       // Get pins, overlay, and the info wrapper elements
       const pins = document.querySelectorAll('.map-pin');
