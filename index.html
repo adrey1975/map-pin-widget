@@ -340,7 +340,7 @@
       /* Media Queries for Responsiveness */
       @media (max-width: 1400px) {
         .map-container { max-width: 1200px; }
-        .info-wrapper .info-panel { max-width: 450px;}
+        .info-wrapper .info-panel { max-width: 600px;}
         .info-wrapper .secondary-info-panel { max-width: 250px; }
         .map-pin { width: 120px; height: 120px; }
         .person-pin { width: 160px; height: 160px; }
@@ -352,7 +352,7 @@
       }
       @media (max-width: 1200px) {
         .map-container { max-width: 1000px; }
-        .info-wrapper .info-panel { max-width: 400px; }
+        .info-wrapper .info-panel { max-width: 800px; }
         .info-wrapper .secondary-info-panel { max-width: 250px; }
         .map-pin { width: 100px; height: 100px; }
         .person-pin { width: 140px; height: 140px; }
@@ -364,7 +364,7 @@
       }
       @media (max-width: 1000px) {
         .map-container { max-width: 800px; }
-        .info-wrapper .info-panel { max-width: 350px; }
+        .info-wrapper .info-panel { max-width: 1000px; }
         .info-wrapper .secondary-info-panel { max-width: 250px; }
         .map-pin { width: 80px; height: 80px; }
         .person-pin { width: 120px; height: 120px; }
@@ -376,7 +376,7 @@
       }
       @media (max-width: 800px) {
         .map-container { max-width: 600px; }
-        .info-wrapper .info-panel { max-width: 300px; }
+        .info-wrapper .info-panel { max-width: 1200px; }
         .info-wrapper .secondary-info-panel { max-width: 250px; }
         .map-pin { width: 60px; height: 60px; }
         .person-pin { width: 100px; height: 100px; }
@@ -388,7 +388,7 @@
       }
       @media (max-width: 500px) {
         .map-container { max-width: 400px; }
-        .info-wrapper .info-panel { max-width: 200px; }
+        .info-wrapper .info-panel { max-width: 1400px; }
         .info-wrapper .secondary-info-panel { max-width: 250px; }
         .map-pin { width: 40px; height: 40px; }
         .person-pin { width: 80px; height: 80px; }
@@ -426,6 +426,10 @@
         data-region="Lightning Strikes" 
         data-disasters="Lightning happens when a lot of electricity builds up in the sky and then is released all at once. It usually occurs during storms when clouds fill with electricity, but sometimes lightning can happen during a volcanic eruption when ash in the air creates sparks, and it tends to strike the tallest things like trees and buildings."
         data-image="nhi/Lightning.png"
+        data-feature1 = "Portable Generators – Devices that provide electricity."
+        data-feature2 = "Lightning Rods – Provide lightning a safe path to the ground, drawing it away from nearby tall trees that might catch fire if struck instead."
+        data-feature3 = "Fire-Resistant Materials – Buildings made with brick, concrete, and metal roofs instead of wood so they don’t burn easily."
+        data-feature4 = "Solar-Powered Lights – Lights that use the sun's energy to work and can stay powered even if the electricity goes out."
         data-question="Lightning can cause fires. What is one way to protect homes from lightning strikes?"
         data-option1="Paint the house blue to blend in with the sky"
         data-option2="Install lightning rods on the roof"
@@ -596,7 +600,11 @@
           imageContainer.addEventListener('click', (e) => {
             e.stopPropagation();
             const secPanel = document.getElementById('secondaryInfoPanel');
-            secPanel.innerHTML = `<p>Additional information about ${region}.</p>`;
+            secPanel.innerHTML = `<p><b>Eco-Resilient Features:</b> ${region}</p>
+              <p><b>1.</b> ${pin.getAttribute('data-feature1')}</p>
+              <p><b>2.</b> ${pin.getAttribute('data-feature2')}</p>
+              <p><b>3.</b> ${pin.getAttribute('data-feature3')}</p>
+              <p><b>4.</b> ${pin.getAttribute('data-feature4')}</p>`;
             secPanel.style.display = 'block';
           });
         }
