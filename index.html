@@ -81,7 +81,7 @@
         max-width: 2000px;
         margin: 0 auto;
         background: #f0f0f0;
-        margin-top: 120px;
+        margin-top: 80px;
       }
       .map-image {
         width: 100%;
@@ -125,10 +125,10 @@
         display: none;
         z-index: 1001;
       }
-      .info-wrapper .info-panel {
+      .info-wrapper .info-panel{
         position: relative;
         width: 80%;
-        max-width: 500px;
+        max-width: 1500px;
         min-height: 50px;
         padding: 10px;
         border-radius: 10px;
@@ -139,13 +139,14 @@
         /* Ensure main panel stays on top */
         z-index: 2;
       }
+
       .info-wrapper .secondary-info-panel {
         position: absolute;
         top: 0;
-        left: calc(100% + 10px);
+        left: calc(100% + 5px);
         width: 40%;
-        max-width: 300px;
-        min-height: 50px;
+        max-width: 800px;
+        min-height: 150px;
         padding: 10px;
         border-radius: 10px;
         background: #fff;
@@ -269,7 +270,7 @@
         font-family: 'Poppins', sans-serif;
         font-size: 3em;
         margin-bottom: 10px;
-        margin-top: 30px;
+        margin-top: 50px;
       }
       h2 {
         font-size: 2em;
@@ -340,8 +341,8 @@
       /* Media Queries for Responsiveness */
       @media (max-width: 1400px) {
         .map-container { max-width: 1200px; }
-        .info-wrapper .info-panel { max-width: 600px;}
-        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 1000px; }
+        .info-wrapper .secondary-info-panel { max-width: 1000px; }
         .map-pin { width: 120px; height: 120px; }
         .person-pin { width: 160px; height: 160px; }
         h1 { font-size: 2.5em; }
@@ -352,8 +353,8 @@
       }
       @media (max-width: 1200px) {
         .map-container { max-width: 1000px; }
-        .info-wrapper .info-panel { max-width: 800px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 800px; transform: translateY(10%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(10%)}
         .map-pin { width: 100px; height: 100px; }
         .person-pin { width: 140px; height: 140px; }
         h1 { font-size: 2.2em; }
@@ -364,8 +365,8 @@
       }
       @media (max-width: 1000px) {
         .map-container { max-width: 800px; }
-        .info-wrapper .info-panel { max-width: 1000px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 1000px;  transform: translateY(20%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(20%)}
         .map-pin { width: 80px; height: 80px; }
         .person-pin { width: 120px; height: 120px; }
         h1 { font-size: 2em; }
@@ -376,10 +377,11 @@
       }
       @media (max-width: 800px) {
         .map-container { max-width: 600px; }
-        .info-wrapper .info-panel { max-width: 1200px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 1200px; transform: translateY(30%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(30%)}
         .map-pin { width: 60px; height: 60px; }
-        .person-pin { width: 100px; height: 100px; }
+        .person-pin { width: 100px; height: 100px;}
+        .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
         h1 { font-size: 1.8em; }
         h2 { font-size: 1.2em; }
         h3 { font-size: 1em; }
@@ -387,11 +389,12 @@
         label { font-size: 0.9em; }
       }
       @media (max-width: 500px) {
-        .map-container { max-width: 400px; }
-        .info-wrapper .info-panel { max-width: 1400px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; }
+        .map-container { max-width: 400px; transform: translateY(40%)}
+        .info-wrapper .info-panel:not(.person-info) { max-width: 1400px; }
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(40%)}
         .map-pin { width: 40px; height: 40px; }
         .person-pin { width: 80px; height: 80px; }
+        .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
         h1 { font-size: 1.8em; }
         h2 { font-size: 1.2em; }
         h3 { font-size: 1em; }
@@ -505,6 +508,7 @@
       <div class="info-wrapper" id="infoWrapper">
         <div class="info-panel" id="infoPanel"></div>
         <div class="secondary-info-panel" id="secondaryInfoPanel"></div>
+        <div class="person-info-panel" id="personInfoPanel"></div>
       </div>
     </div>
 
