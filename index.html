@@ -19,8 +19,8 @@
       /* Container holding the map */
       .map-container {
         position: relative;
-        width: 2000px;
-        height: auto;
+        width: 100%;
+        max-width: 2000px; /* your intended maximum */
         margin: 0 auto;
         background: #f0f0f0;
       }
@@ -66,6 +66,23 @@
         background-color: #0056b3;
       }
 
+      /* Default styling for info panels (both normal and person-specific) */
+      .info-panel,
+      .info-panel.person-info {
+        position: absolute;
+        width: 80%;         /* Use a percentage so it scales with the container */
+        max-width: 500px;   /* But don't allow it to be too wide */
+        min-height: 50px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #fff;
+        border: 2px solid #0056b3;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        display: block;
+        z-index: 1001;
+        font-family: 'Poppins', sans-serif;
+      }
+
       /* Pin icon styling */
       .map-pin {
         position: absolute;
@@ -84,20 +101,6 @@
       }
       .map-pin:hover {
         transform: scale(1.1);
-      }
-
-      /* Info panel styling */
-      .info-panel {
-        position: absolute;
-        width: 1000px;
-        min-height: 1000px;
-        padding: 10px;
-        border-radius: 10px;
-        background: #fff;
-        border: 2px solid #ccc;
-        display: block;
-        z-index: 1001;
-        font-family: 'Poppins', sans-serif;
       }
 
       /* Image inside info panel styling */
@@ -134,22 +137,12 @@
         border-top: 8px solid #fff;
       }
 
-      /* Modified styles for the person pin's info panel */
-      .info-panel.person-info {
-        position: absolute;
-        width: 500px;
-        min-height: 50px;
-        padding: 10px;
-        background: #fff;
-        border: 2px solid #ccc;
-        display: none; /* Hidden by default */
-        font-family: 'Poppins', sans-serif;
-      }
+
       /* Arrow for person pin's info panel (pointing left) */
       .info-panel.person-info::before {
         content: "";
         position: absolute;
-        top: 20px; /* Adjust as needed */
+        top: 40px; /* Adjust as needed */
         left: -20px;   /* Place arrow on left edge */
         width: 0;
         height: 0;
@@ -252,126 +245,120 @@
       }
      
      
-      /* Responsive Breakpoints for Computer Screens */
-      /* Max width 1400px */
+      /* Media Queries for Responsiveness */
+
+      /* For screens up to 1400px wide */
       @media (max-width: 1400px) {
-        .map-pin {
-          max-width: 120px;
+        .map-container {
+          max-width: 1200px;
         }
         .info-panel,
         .info-panel.person-info {
           max-width: 450px;
         }
-        .map-container {
-          max-width: 1200px;
+        .map-pin {
+          width: 120px;
+          height: 120px;
         }
-
-        /* image inside info panel */
-        .info-panel img, .info-panel .info-panel-image {
-          max-width: 900px;
+        .person-pin {
+          width: 160px;
+          height: 160px;
         }
-        
-        /* question form label */
         #questionForm label {
           width: 400px;
         }
       }
 
-      /* Max width 1200px */
+      /* For screens up to 1200px wide */
       @media (max-width: 1200px) {
-        .map-pin {
-          max-width: 100px;
+        .map-container {
+          max-width: 1000px;
         }
         .info-panel,
         .info-panel.person-info {
           max-width: 400px;
         }
-        .map-container {
-          max-width: 1000px;
+        .map-pin {
+          width: 100px;
+          height: 100px;
         }
-
-        /* image inside info panel */
-        .info-panel img, .info-panel .info-panel-image {
-          max-width: 600px;
+        .person-pin {
+          width: 140px;
+          height: 140px;
         }
-
-        /* question form label */
         #questionForm label {
           width: 300px;
         }
       }
 
-      /* Max width 1000px */
+      /* For screens up to 1000px wide */
       @media (max-width: 1000px) {
-        .map-pin {
-          max-width: 80px;
+        .map-container {
+          max-width: 800px;
         }
         .info-panel,
         .info-panel.person-info {
           max-width: 350px;
         }
-        .map-container {
-          max-width: 800px;
+        .map-pin {
+          width: 80px;
+          height: 80px;
         }
-
-        /* image inside info panel */
-        .info-panel img, .info-panel .info-panel-image {
-          max-width: 400px;
+        .person-pin {
+          width: 120px;
+          height: 120px;
         }
-
-        /* question form label */
         #questionForm label {
           width: 200px;
         }
       }
 
-      /* Max width 800px */
+      /* For screens up to 800px wide */
       @media (max-width: 800px) {
-        .map-pin {
-          max-width: 60px;
+        .map-container {
+          max-width: 600px;
         }
         .info-panel,
         .info-panel.person-info {
           max-width: 300px;
         }
-        .map-container {
-          max-width: 600px;
+        .map-pin {
+          width: 60px;
+          height: 60px;
         }
-
-        /* image inside info panel */
-        .info-panel img, .info-panel .info-panel-image {
-          max-width: 300px;
+        .person-pin {
+          width: 100px;
+          height: 100px;
         }
-
-        /* question form label */
         #questionForm label {
           width: 150px;
         }
       }
 
-      /* Max width 600px */
+      /* For screens up to 500px wide */
       @media (max-width: 500px) {
-        .map-pin {
-          max-width: 40px;
+        .map-container {
+          max-width: 400px;
         }
         .info-panel,
         .info-panel.person-info {
           max-width: 200px;
         }
-        .map-container {
-          max-width: 400px;
+        .map-pin {
+          width: 40px;
+          height: 40px;
         }
-
-        /* image inside info panel */
-        .info-panel img, .info-panel .info-panel-image {
-          max-width: 200px;
+        .person-pin {
+          width: 80px;
+          height: 80px;
         }
-
-        /* question form label */
         #questionForm label {
           width: 100px;
         }
       }
+
+
+      
 
     </style>
   </head>
@@ -525,7 +512,7 @@
           const pinTopPercent = parseFloat(pin.style.top);
           const pinLeftPercent = parseFloat(pin.style.left);
           const finalTop = pinTopPercent; // same vertical alignment
-          const finalLeft = pinLeftPercent + 8; // shift to the right (adjust as needed)
+          const finalLeft = pinLeftPercent + 10; // shift to the right (adjust as needed)
           infoPanel.style.top = finalTop + '%';
           infoPanel.style.left = finalLeft + '%';
           infoPanel.style.transform = 'none'; // remove centering transform
