@@ -608,13 +608,23 @@
             </div>`;
         }
         if (isPerson) {
-          contentHTML += `<button id="beginButton">Begin</button>`;
-          infoPanel.classList.add('person-info');
+          // Check if all badges have been earned.
+          if (allBadgesEarned()) {
+            contentHTML = `<h2>Congratulations!</h2>
+                          <p>You’ve earned all the badges!</p>`;
+          } else {
+            contentHTML += `<button id="beginButton">Begin</button>`;
+            infoPanel.classList.add('person-info');
+          }
         } else {
           infoPanel.classList.remove('person-info');
         }
 
+        // Add question form if users haven't earned the badge yet
         if (question) {
+          if(earnedBadges[region]) {
+            contentHTML += `<p>You've already earned the badge for this region!</p>`;
+          } else {
           contentHTML += `<form id="questionForm">
             <h3>${question}</h3>
             <div class="radio-option">
@@ -633,6 +643,7 @@
           </form>
           <div id="badgeMessage"></div>`;
         }
+      }
 
         // Update main panel and show overlay
         infoPanel.innerHTML = contentHTML;
@@ -742,6 +753,13 @@
             document.getElementById('secondaryInfoPanel').style.display = 'none';
             }
         });
+
+        function allBadgesEarned() {
+          const badgeImgs = document.querySelectorAll('#badgeContainer img');
+
+          // Compare the number of keys in the earnedBadges object to the number of badge images
+          return Object.keys(earnedBadges).length === badgeImgs.length;
+        }
 
       // On page load, show the person pin's info panel automatically
       window.addEventListener('load', () => {
