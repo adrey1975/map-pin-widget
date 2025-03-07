@@ -43,6 +43,7 @@
         transition: filter 0.3s;
       }
 
+
       /* Button Styles */
       .button {
         background-color: var(--button-background-color);
@@ -90,10 +91,11 @@
       .map-container {
         position: relative;
         width: 100%;
-        max-width: 2000px;
+        max-width: 1600px;
         margin: 0 auto;
         background: #f0f0f0;
         margin-top: 80px;
+        margin-bottom: 80px;
       }
       .map-image {
         width: 100%;
@@ -350,6 +352,14 @@
         background-color: rgb(162, 169, 242);
       }
 
+      /* Badge Message Styling */
+      #badgeMessage {
+        margin-top: 10px;
+        font-size: 1.3em;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+      }
+
       /* Media Queries for Responsiveness */
       @media (max-width: 1400px) {
         .map-container { max-width: 1200px; }
@@ -462,7 +472,9 @@
         data-question="Lightning tends to strike which of the following?"
         data-option1="The shortest objects"
         data-option2="The smallest objects"
-        data-option3="The tallest things like trees and buildings">
+        data-option3="The tallest things like trees and buildings"
+        data-correct="3"
+        data-badge="badge-lightning">
       <img
         src="m-n-pv2/drought-pin.svg"
         class="map-pin" 
@@ -475,7 +487,9 @@
         data-question="Which eco-resilient feature collects rainwater from roofs to use during a drought?"
         data-option1="A swimming pool"
         data-option2="A water slide"
-        data-option3="A rain barrel">
+        data-option3="A rain barrel"
+        data-correct="3"
+        data-badge="badge-drought">
       <img
         src="m-n-pv2/earthquake-pin.svg"
         class="map-pin" 
@@ -488,7 +502,9 @@
         data-question="What is one way buildings can be protected during earthquakes?"
         data-option1="By installing a lot of windows"
         data-option2="Use shock absorbing foundations"
-        data-option3="Using heavy roof materials">
+        data-option3="Using heavy roof materials"
+        data-correct="2"
+        data-badge="badge-quake">
       <img
         src="m-n-pv2/fire-pin.svg"
         class="map-pin" 
@@ -501,7 +517,9 @@
         data-question="What type of building materials are suggested for fire-resistant homes?"
         data-option1="Bamboo and rubber"
         data-option2="Glass and plastic"
-        data-option3="Brick, metal and concrete">
+        data-option3="Brick, metal and concrete"
+        data-correct="3"
+        data-badge="badge-fire">
       <img
         src="m-n-pv2/volcano-pin.svg"
         class="map-pin" 
@@ -514,7 +532,9 @@
         data-question="How do air purifiers help protect people during a volcanic eruption?"
         data-option1="Removing ash from the air"
         data-option2="Blocking the hot lava"
-        data-option3="They change the color of the ash">
+        data-option3="They change the color of the ash"
+        data-correct="1"
+        data-badge="badge-volcano">
       <img
         src="m-n-pv2/wind-pin.svg"
         class="map-pin" 
@@ -527,7 +547,9 @@
         data-question="What is one thing you can build in your community to protect against strong winds?"
         data-option1="A bigger house"
         data-option2="A tree house"
-        data-option3="A storm shelter">
+        data-option3="A storm shelter"
+        data-correct="3"
+        data-badge="badge-wind">
       <img
         src="m-n-pv2/flood-pin.svg"
         class="map-pin" 
@@ -540,7 +562,10 @@
         data-question="How can homes be eco-resilient and prepare against flooding?"
         data-option1="Build homes on stilts"
         data-option2="Plant trees"
-        data-option3="Build homes in low-lying areas">
+        data-option3="Build homes in low-lying areas"
+        data-correct="1"
+        data-badge="badge-flood">
+      <!--  -->
 
       <!-- Info Wrapper containing both panels -->
       <div class="info-wrapper" id="infoWrapper">
@@ -552,6 +577,9 @@
 
     <!--JavaScript-->
     <script>
+      // Global object to track earned badges
+      const earnedBadges = {};
+
       // Get pins, overlay, and the info wrapper elements
       const pins = document.querySelectorAll('.map-pin');
       const infoWrapper = document.getElementById('infoWrapper');
@@ -602,7 +630,8 @@
               <label for="option3">${option3}</label>
             </div>
             <button id="submitAnswer" type="submit">Submit</button>
-          </form>`;
+          </form>
+          <div id="badgeMessage"></div>`;
         }
 
         // Update main panel and show overlay
@@ -647,7 +676,47 @@
             secPanel.style.display = 'block';
           });
         }
+      
+
+      // Add submit handler for the question form (if it exists in the panel)
+        // Add submit handler for the question form (if it exists)
+        const questionForm = document.getElementById('questionForm');
+        if (questionForm) {
+          questionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selected = questionForm.querySelector('input[name="answer"]:checked');
+            const messageContainer = document.getElementById('badgeMessage');
+            if (!selected) {
+              messageContainer.innerText = "Please select an answer.";
+              return;
+            }
+            const answer = selected.value;
+            const correctAnswer = pin.getAttribute('data-correct');
+            if (answer === correctAnswer) {
+              messageContainer.innerText = "Correct! You've earned the badge.";
+              messageContainer.style.color = "green";
+              // Award the badge if it hasn't been awarded already
+              if (!earnedBadges[region]) {
+                earnedBadges[region] = true;
+                // Find the corresponding badge image in the badge container using the data-region attribute
+                const badgeImg = document.querySelector(`#badgeContainer img[data-region="${region}"]`);
+                if (badgeImg) {
+                  badgeImg.style.filter = 'none';
+                }
+              }
+              // Remove the submit button so the user can't answer again
+              const submitButton = document.getElementById('submitAnswer');
+              if (submitButton) {
+                submitButton.style.display = 'none';
+              }
+            } else {
+              messageContainer.innerText = "Incorrect answer. Try again!";
+              messageContainer.style.color = "red";
+            }
+          });
+        }
       }
+
 
       // Add click event listener to all pins
       pins.forEach(pin => {
