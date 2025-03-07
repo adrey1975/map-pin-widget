@@ -200,7 +200,7 @@
         align-items: center;
         justify-content: center;
         color: #fff;
-        font-size: 1.2em;
+        font-size: 2.5em;
         text-align: center;
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -350,11 +350,12 @@
         h3 { font-size: 1.3em; }
         p { font-size: 1.1em; }
         label { font-size: 1.2em; }
+        .image-overlay { font-size: 2em; }
       }
       @media (max-width: 1200px) {
         .map-container { max-width: 1000px; }
         .info-wrapper .info-panel:not(.person-info) { max-width: 800px; transform: translateY(10%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(10%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(30%)}
         .map-pin { width: 100px; height: 100px; }
         .person-pin { width: 140px; height: 140px; }
         h1 { font-size: 2.2em; }
@@ -362,11 +363,12 @@
         h3 { font-size: 1.2em; }
         p { font-size: 1em; }
         label { font-size: 1.1em; }
+        .image-overlay { font-size: 1.8em; }
       }
       @media (max-width: 1000px) {
         .map-container { max-width: 800px; }
         .info-wrapper .info-panel:not(.person-info) { max-width: 1000px;  transform: translateY(20%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(20%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(40%)}
         .map-pin { width: 80px; height: 80px; }
         .person-pin { width: 120px; height: 120px; }
         h1 { font-size: 2em; }
@@ -374,11 +376,12 @@
         h3 { font-size: 1.1em; }
         p { font-size: 0.9em; }
         label { font-size: 1em; }
+        .image-overlay { font-size: 1.6em; }
       }
       @media (max-width: 800px) {
         .map-container { max-width: 600px; }
         .info-wrapper .info-panel:not(.person-info) { max-width: 1200px; transform: translateY(30%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(30%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(50%)}
         .map-pin { width: 60px; height: 60px; }
         .person-pin { width: 100px; height: 100px;}
         .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
@@ -387,11 +390,12 @@
         h3 { font-size: 1em; }
         p { font-size: 0.8em; }
         label { font-size: 0.9em; }
+        .image-overlay { font-size: 1.4em; }
       }
       @media (max-width: 500px) {
         .map-container { max-width: 400px; transform: translateY(40%)}
         .info-wrapper .info-panel:not(.person-info) { max-width: 1400px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(40%)}
+        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(60%)}
         .map-pin { width: 40px; height: 40px; }
         .person-pin { width: 80px; height: 80px; }
         .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
@@ -400,6 +404,7 @@
         h3 { font-size: 1em; }
         p { font-size: 0.8em; }
         label { font-size: 0.9em; }
+        .image-overlay { font-size: 1.4em; }
       }
     </style>
 
@@ -407,6 +412,17 @@
   </head>
   <body>
     <h1>Eco-Resilience Explorer</h1>
+    <!-- Badge container for earned badges -->
+    <div id="badgeContainer">
+      <!-- Each badge image has a data-region attribute to match a pin -->
+      <img id="badge-drought" data-region="Droughts" src="log-and-stamps/drought-stamp.svg" alt="Drought Badge">
+      <img id="badge-flood" data-region="Flooding" src="log-and-stamps/flood-stamp.svg" alt="Flood Badge">
+      <img id="badge-fire" data-region="Fires" src="log-and-stamps/fire-stamp.svg" alt="Fire Badge">
+      <img id="badge-lightning" data-region="Lightning Strikes" src="log-and-stamps/lightning-stamp.svg" alt="Lightning Badge">
+      <img id="badge-wind" data-region="Strong Winds" src="log-and-stamps/wind-stamp.svg" alt="Wind Badge">
+      <img id="badge-volcano" data-region="Volcano Eruptions" src="log-and-stamps/volcano-stamp.svg" alt="Volcano Badge">
+      <img id="badge-quake" data-region="Extreme Vibrations" src="log-and-stamps/quake-stamp.svg" alt="Quake Badge">
+    </div>
     <div class="map-container">
       <!-- Map image -->
       <img src="/m-n-pv2/map.svg" alt="Map" class="map-image" />
@@ -548,7 +564,7 @@
         if (hazardImage) {
           contentHTML += `<div class="image-container">
               <img src="${hazardImage}" alt="Hazard Image" class="info-panel-image" />
-              <div class="image-overlay"><span>Click for more info</span></div>
+              <div class="image-overlay"><span>Click to see features!</span></div>
             </div>`;
         }
         if (isPerson) {
