@@ -360,6 +360,15 @@
         font-family: 'Poppins', sans-serif;
       }
 
+      /* Congrats Message Styling */
+      #congratsMessage {
+        display: block;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2em;
+        margin-top: 20px;
+      }
+
       /* Media Queries for Responsiveness */
       @media (max-width: 1400px) {
         .map-container { max-width: 1200px; }
@@ -586,6 +595,14 @@
       const infoPanel = document.getElementById('infoPanel');
       const overlay = document.querySelector('.overlay');
 
+      // Function to check which badges have been earned
+      function allBadgesEarned() {
+          const badgeImgs = document.querySelectorAll('#badgeContainer img');
+
+          // Compare the number of keys in the earnedBadges object to the number of badge images
+          return Object.keys(earnedBadges).length === badgeImgs.length;
+        }
+
       // Function to update and show the info panels within the wrapper
       function showInfoPanel(pin) {
         const region = pin.getAttribute('data-region');
@@ -610,8 +627,10 @@
         if (isPerson) {
           // Check if all badges have been earned.
           if (allBadgesEarned()) {
-            contentHTML = `<h2>Congratulations!</h2>
-                          <p>You’ve earned all the badges!</p>`;
+            contentHTML = `<div id="congratsMessage">
+                              <h2>Woot!Woot!</h2>
+                              <p>You’ve earned all the badges!</p>
+                            </div>`;
           } else {
             contentHTML += `<button id="beginButton">Begin</button>`;
             infoPanel.classList.add('person-info');
@@ -754,19 +773,14 @@
             }
         });
 
-        function allBadgesEarned() {
-          const badgeImgs = document.querySelectorAll('#badgeContainer img');
 
-          // Compare the number of keys in the earnedBadges object to the number of badge images
-          return Object.keys(earnedBadges).length === badgeImgs.length;
-        }
 
       // On page load, show the person pin's info panel automatically
       window.addEventListener('load', () => {
         const personPin = document.querySelector('.person-pin');
         if (personPin) {
           showInfoPanel(personPin);
-        }
+        } 
       });
     </script>
   </body>
