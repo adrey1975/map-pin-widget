@@ -385,6 +385,18 @@
         margin-top: 20px;
       }
 
+      /* Exit button inside info panels styling */
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        color: var(--off-black);
+      }
+
       /* Media Queries for Responsiveness */
       @media (max-width: 1400px) {
         .map-container { max-width: 1200px; }
@@ -644,8 +656,10 @@
         const option3 = pin.getAttribute('data-option3');
 
         // Build main panel content
-        let contentHTML = `<h2>${region}</h2>
+        let contentHTML = `<button class="close-button" id="closeButton">X</button>
+          <h2>${region}</h2>
           <p>${disasters}</p>`;
+
 
         if (hazardImage) {
           contentHTML += `<div class="image-container">
@@ -696,6 +710,16 @@
         // Update main panel and show overlay
         infoPanel.innerHTML = contentHTML;
         overlay.style.display = 'block';
+
+        // After updating the info panel content
+        const closeButton = document.getElementById('closeButton');
+        if (closeButton) {
+        closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            infoWrapper.style.display = 'none';
+            overlay.style.display = 'none';
+            });
+        }      
 
         // Position the info wrapper relative to the clicked pin
         if (isPerson) {
