@@ -29,6 +29,7 @@
         font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
+        color: var(--off-black)!important;
       }
       /* Badge Container Styles */
       #badgeContainer {
@@ -93,10 +94,13 @@
         width: 100%;
         max-width: 1600px;
         margin: 0 auto;
-        background: #f0f0f0;
+        border: .2em solid var(--gray-light);
+        border-radius: .4em;
+        background-color: white;
         margin-top: 80px;
         margin-bottom: 80px;
       }
+
       .map-image {
         width: 100%;
         height: 100%;
@@ -116,22 +120,27 @@
         z-index: 900;
       }
       #beginButton {
-        display: block;
-        margin-left: auto;
-        margin-right: 10px;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: rgb(92, 113, 242);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        transition: background-color 0.2s;
+        --reset-border-color: var(--blue);
+            height: 3em;
+            border-radius: 1.5em;
+            font-family: inherit;
+            border: none;
+            background-color: var(--blue);
+            color: white;
+            padding: 0em 3em;
+            transition: background-color .15s ease-in-out, border .15s ease-in-out;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            cursor: pointer;
       }
       #beginButton:hover {
-        background-color: rgb(162, 169, 242);
+        border: .2em solid var(--reset-border-color) !important;
       }
+      #beginButton:active {
+        --reset-border-color: var(--blue-dark);
+        background-color: var(--blue-dark);
+        }
 
       /* Info Wrapper & Panels */
       .info-wrapper {
@@ -145,9 +154,9 @@
         max-width: 1500px;
         min-height: 50px;
         padding: 10px;
-        border-radius: 10px;
-        background: #fff;
-        border: 2px solid rgb(92, 113, 242);
+        background-color: var(--off-white);
+        border: .2em solid var(--gray-light);
+        border-radius: .4em;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         font-family: 'Poppins', sans-serif;
         /* Ensure main panel stays on top */
@@ -162,9 +171,9 @@
         max-width: 800px;
         min-height: 150px;
         padding: 10px;
-        border-radius: 10px;
-        background: #fff;
-        border: 2px solid rgb(92, 113, 242);
+        background-color: var(--off-white);
+        border: .2em solid var(--gray-light);
+        border-radius: .4em;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         font-family: 'Poppins', sans-serif;
         display: none;
@@ -194,8 +203,8 @@
         position: relative;
         width: 80%;
         margin: 10px auto;
-        border: 2px solid rgb(92, 113, 242);
-        border-radius: 10px;
+        border: .2em solid var(--gray-light);
+        border-radius: .4em;
         overflow: hidden;
       }
       .info-panel-image {
@@ -213,7 +222,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
+        color: var(--off-white);
         font-size: 2.5em;
         text-align: center;
         opacity: 0;
@@ -236,7 +245,7 @@
         height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-top: 10px solid rgb(92, 113, 242);
+        border-top: 10px solid var(--gray-light);
       }
       .info-panel::after {
         content: "";
@@ -247,7 +256,7 @@
         height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-top: 8px solid #fff;
+        border-top: 8px solid var(--off-white);
       }
       .info-panel.person-info::before {
         content: "";
@@ -258,7 +267,7 @@
         height: 0;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
-        border-right: 10px solid #fff;
+        border-right: 10px solid var(--off-white);
         z-index: 1002;
       }
       .info-panel.person-info::after {
@@ -270,7 +279,7 @@
         height: 0;
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
-        border-right: 8px solid #fff;
+        border-right: 8px solid var(--off-white);
       }
       .info-panel:not(.person-info)::before,
       .info-panel:not(.person-info)::after {
@@ -336,21 +345,28 @@
         transform: scale(1.5);
       }
       #submitAnswer {
-        display: inline-block;
-        margin-top: 10px;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: rgb(92, 113, 242);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        transition: background-color 0.2s;
+        --reset-border-color: var(--blue);
+                height: 3em;
+                border-radius: 1.5em;
+                font-family: inherit;
+                border: none;
+                background-color: var(--blue);
+                color: white;
+                padding: 0em 3em;
+                transition: background-color .15s ease-in-out, border .15s ease-in-out;
+                display: block;
+                margin: auto;
+                margin-top: 20px;
+                cursor: pointer;
       }
       #submitAnswer:hover {
-        background-color: rgb(162, 169, 242);
+        border: .2em solid var(--reset-border-color) !important;
       }
+
+      #submitAnswer:active {
+            --reset-border-color: var(--blue-dark);
+            background-color: var(--blue-dark);
+        } 
 
       /* Badge Message Styling */
       #badgeMessage {
@@ -708,7 +724,6 @@
           });
         }
       
-
       // Add submit handler for the question form (if it exists in the panel)
         // Add submit handler for the question form (if it exists)
         const questionForm = document.getElementById('questionForm');
@@ -741,9 +756,16 @@
                 submitButton.style.display = 'none';
               }
 
-            // Check if all badges are now earned, and if so, trigger confetti
+            // Check if all badges are now earned, and if so, trigger confetti and end state 
             if (allBadgesEarned()) {
                 triggerConfetti();
+                
+                // trigger person info panel 
+                const personPin = document.querySelector('.person-pin');
+                if (personPin) {
+                    showInfoPanel(personPin);
+                }
+
             }
 
             } else {
