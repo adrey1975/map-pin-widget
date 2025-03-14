@@ -389,6 +389,10 @@
         margin-top: 20px;
       }
 
+      /* Canvas styling */
+      canvas {
+        z-index: 2000;
+      }
       /* Exit button inside info panels styling */
       .close-button {
         position: absolute;
@@ -417,7 +421,7 @@
       }
       @media (max-width: 992px) {
         .map-container { max-width: 900px; }
-        .info-wrapper .info-panel:not(.person-info) { max-width: 80%; transform: translateY(10%);}
+        .info-wrapper .info-panel:not(.person-info) { max-width: 100%; transform: translateY(10%);}
         .info-wrapper .secondary-info-panel { max-width: 100%; transform: translateY(15%)}
         .map-pin { width: 100px; height: 100px; }
         .person-pin { width: 140px; height: 140px; }
@@ -522,7 +526,7 @@
       <img
         src="pins-v3/earthquake.svg"
         class="map-pin" 
-        style="top: 45%; left: 55%;" 
+        style="top: 40%; left: 50%;" 
         data-region="Extreme Vibrations" 
         data-disasters="Extreme vibrations are caused by earthquakes when huge pieces of the Earth, called tectonic plates, move and bump into each other. Earthquakes usually occur along cracks in the Earth, known as fault lines, which are often found near the edges of big oceans."
         data-image="nhi/Vibrations.png"
@@ -537,7 +541,7 @@
       <img
         src="pins-v3/fire.svg"
         class="map-pin" 
-        style="top: 35%; left: 10%;" 
+        style="top: 35%; left: 13%;" 
         data-region="Fires" 
         data-disasters="Fires can be ignited by lightning strikes, downed power lines from storms, or even volcanic eruptions—especially when the weather is extremely hot and dry. Flames can rapidly spread across forests, grasslands, or other dry areas."
         data-image="nhi/fires.png"
