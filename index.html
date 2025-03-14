@@ -443,6 +443,7 @@
   </head>
   <body>
     <h1>Eco-Resilience Explorer</h1>
+    <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none;"></canvas>
     <!-- Badge container for earned badges -->
     <div id="badgeContainer">
       <!-- Each badge image has a data-region attribute to match a pin -->
@@ -468,7 +469,7 @@
         data-region="Hi there!" 
         data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
 
-      <!-- Natrual disaster map pins -->
+      <!-- Natural disaster map pins -->
       <img
         src="pins-v3/lightning.svg"
         class="map-pin" 
@@ -739,6 +740,12 @@
               if (submitButton) {
                 submitButton.style.display = 'none';
               }
+
+            // Check if all badges are now earned, and if so, trigger confetti
+            if (allBadgesEarned()) {
+                triggerConfetti();
+            }
+
             } else {
               messageContainer.innerText = "Incorrect answer. Try again!";
               messageContainer.style.color = "red";
@@ -773,8 +780,43 @@
             }
         });
 
+        // Set up the confetti canvas
+        const confettiCanvas = document.getElementById('confettiCanvas');
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        const ctx = confettiCanvas.getContext('2d');
+        let confettiParticles = [];
 
+        function triggerConfetti() {
+        // Resize the canvas (useful if the window size changed)
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+        // Create 300 confetti particles with random properties
+            for (let i = 0; i < 300; i++) {
+                confettiParticles.push({
+                x: Math.random() * confettiCanvas.width,
+                y: Math.random() * confettiCanvas.height,
+                color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                size: Math.random() * 5 + 2,
+                speed: Math.random() * 3 + 1,
+                });
+            }
+            drawConfetti();
+        }
 
+        function drawConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiParticles.forEach((particle, i) => {
+            ctx.fillStyle = particle.color;
+            ctx.fillRect(particle.x, particle.y, particle.size, particle.size);
+            particle.y += particle.speed;
+            // Remove particles that fall below the canvas
+            if (particle.y > confettiCanvas.height) confettiParticles.splice(i, 1);
+            });
+            if (confettiParticles.length > 0) {
+                requestAnimationFrame(drawConfetti);
+                }
+            }
       // On page load, show the person pin's info panel automatically
       window.addEventListener('load', () => {
         const personPin = document.querySelector('.person-pin');
