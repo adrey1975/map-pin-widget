@@ -31,6 +31,7 @@
         padding: 0;
         color: var(--off-black)!important;
       }
+      
       /* Badge Container Styles */
       #badgeContainer {
         margin-bottom: 150px;
@@ -465,147 +466,147 @@
     
   </head>
   <body>
-    <h1>Eco-Resilience Explorer</h1>
     <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none;"></canvas>
-    <!-- Badge container for earned badges -->
-    <div id="badgeContainer">
-      <!-- Each badge image has a data-region attribute to match a pin -->
-      <img id="badge-drought" data-region="Droughts" src="log-and-stamps/drought-stamp.svg" alt="Drought Badge">
-      <img id="badge-flood" data-region="Flooding" src="log-and-stamps/flood-stamp.svg" alt="Flood Badge">
-      <img id="badge-fire" data-region="Fires" src="log-and-stamps/fire-stamp.svg" alt="Fire Badge">
-      <img id="badge-lightning" data-region="Lightning Strikes" src="log-and-stamps/lightning-stamp.svg" alt="Lightning Badge">
-      <img id="badge-wind" data-region="Strong Winds" src="log-and-stamps/wind-stamp.svg" alt="Wind Badge">
-      <img id="badge-volcano" data-region="Volcano Eruptions" src="log-and-stamps/volcano-stamp.svg" alt="Volcano Badge">
-      <img id="badge-quake" data-region="Extreme Vibrations" src="log-and-stamps/quake-stamp.svg" alt="Quake Badge">
-    </div>
-    <div class="map-container">
-      <!-- Map image -->
-      <img src="map.svg" alt="Map" class="map-image" />
-      <!-- Overlay to shade background -->
-      <div class="overlay"></div>
-
-      <!-- Person pin -->
-      <img
-        src="character.png"
-        class="map-pin person-pin" 
-        style="top: 10%; left: 0%;" 
-        data-region="Hi there!" 
-        data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
-
-      <!-- Natural disaster map pins -->
-      <img
-        src="pins-v3/lightning.svg"
-        class="map-pin" 
-        style="top: 40%; left: 75%;" 
-        data-region="Lightning Strikes" 
-        data-disasters="Lightning happens when a lot of electricity builds up in the sky and then is released all at once. It usually occurs during storms when clouds fill with electricity, but sometimes lightning can happen during a volcanic eruption when ash in the air creates sparks, and it tends to strike the tallest things like trees and buildings."
-        data-image="nhi/Lightning.png"
-        data-feature1 = "Portable Generators – Devices that provide electricity."
-        data-feature2 = "Lightning Rods – Provide lightning a safe path to the ground, drawing it away from nearby tall trees that might catch fire if struck instead."
-        data-question="Lightning tends to strike which of the following?"
-        data-option1="The shortest objects"
-        data-option2="The smallest objects"
-        data-option3="The tallest things like trees and buildings"
-        data-correct="3"
-        data-badge="badge-lightning">
-      <img
-        src="pins-v3/drought.svg"
-        class="map-pin" 
-        style="top: 50%; left: 35%;" 
-        data-region="Droughts" 
-        data-disasters="Droughts are most common in dry areas where it rarely rains, like deserts or regions with long, hot seasons. They can also happen in places with regular rainfall if the rain stops for a long time. Droughts can cause water shortages, crop failures, and wildfires."
-        data-image="nhi/Drought.png"
-        data-feature1 = "Rain Barrels – Rain barrels help collect rainwater from roofs for later use which helps conserve water. "
-        data-feature2 = "Drought-Resistant Plants – Plants like sage, agave, succulents and oak trees that don’t need much watering while also benefiting the community."
-        data-question="Which eco-resilient feature collects rainwater from roofs to use during a drought?"
-        data-option1="A swimming pool"
-        data-option2="A water slide"
-        data-option3="A rain barrel"
-        data-correct="3"
-        data-badge="badge-drought">
-      <img
-        src="pins-v3/earthquake.svg"
-        class="map-pin" 
-        style="top: 40%; left: 50%;" 
-        data-region="Extreme Vibrations" 
-        data-disasters="Extreme vibrations are caused by earthquakes when huge pieces of the Earth, called tectonic plates, move and bump into each other. Earthquakes usually occur along cracks in the Earth, known as fault lines, which are often found near the edges of big oceans."
-        data-image="nhi/Vibrations.png"
-        data-feature1="Shock-Absorbing Foundations – Foundations that work like shock absorbers in a car. "
-        data-feature2="Anchored Buildings – Buildings that are securely attached to the ground."
-        data-question="What is one way buildings can be protected during earthquakes?"
-        data-option1="By installing a lot of windows"
-        data-option2="Use shock absorbing foundations"
-        data-option3="Using heavy roof materials"
-        data-correct="2"
-        data-badge="badge-quake">
-      <img
-        src="pins-v3/fire.svg"
-        class="map-pin" 
-        style="top: 35%; left: 13%;" 
-        data-region="Fires" 
-        data-disasters="Fires can be ignited by lightning strikes, downed power lines from storms, or even volcanic eruptions—especially when the weather is extremely hot and dry. Flames can rapidly spread across forests, grasslands, or other dry areas."
-        data-image="nhi/fires.png"
-        data-feature1="Non-Flammable or Fire-Resistant Building Materials – Buildings made with materials like brick, concrete, and metal instead of wood so they don’t burn easily."
-        data-feature2="Fire-Resistant Landscaping – Creating firebreaks (empty spaces without plants) and using gravel, stone paths, or fire-resistant plants (i.e. agave, succulents, lavender and oak trees) to slow down wildfires. "
-        data-question="What type of building materials are suggested for fire-resistant homes?"
-        data-option1="Bamboo and rubber"
-        data-option2="Glass and plastic"
-        data-option3="Brick, metal and concrete"
-        data-correct="3"
-        data-badge="badge-fire">
-      <img
-        src="pins-v3/volcano.svg"
-        class="map-pin" 
-        style="top: 72%; left: 30%;" 
-        data-region="Volcano Eruptions" 
-        data-disasters="Volcanic eruptions occur when magma from deep inside the Earth builds up pressure and bursts out of a volcano. This release sends hot lava, ash, and gases into the air, sometimes causing damage to nearby areas. Volcanic eruptions can also trigger other hazards like landslides, tsunamis, and earthquakes."
-        data-image="nhi/Volcano.png"
-        data-feature1="Air Purifier - These remove fine ash particles from indoor air during and after an eruption."
-        data-feature2="Fire-Resistant Landscaping – Creating firebreaks (empty spaces without plants) and using gravel, stone paths, or fire-resistant plants (i.e. agave, succulents, lavender and oak trees) to slow down wildfires. "
-        data-question="How do air purifiers help protect people during a volcanic eruption?"
-        data-option1="Removing ash from the air"
-        data-option2="Blocking the hot lava"
-        data-option3="They change the color of the ash"
-        data-correct="1"
-        data-badge="badge-volcano">
-      <img
-        src="pins-v3/wind.svg"
-        class="map-pin" 
-        style="top: 25%; left: 60%;" 
-        data-region="Strong Winds" 
-        data-disasters="Strong winds can occur during severe weather events like thunderstorms, hurricanes, and tornadoes. They are common in coastal areas, especially along the Gulf Coast during hurricanes, and in regions like the central United States, where tornadoes often form."
-        data-image="nhi/Winds.png"
-        data-feature1="Windbreaks – Rows of trees or shrubs that block the wind and protect homes, crops, and soil from erosion."
-        data-feature2="Storm Shelters – Safe places where people can go during tornadoes and hurricanes."
-        data-question="What is one thing you can build in your community to protect against strong winds?"
-        data-option1="A bigger house"
-        data-option2="A tree house"
-        data-option3="A storm shelter"
-        data-correct="3"
-        data-badge="badge-wind">
-      <img
-        src="pins-v3/flood.svg"
-        class="map-pin" 
-        style="top: 63%; left: 58%;" 
-        data-region="Flooding" 
-        data-disasters="Flooding occurs when water covers land that is usually dry, often in low-lying areas, along riverbanks, coastal regions, or urban settings with poor drainage. It can result from heavy rainfall, rapid snowmelt, tsunamis, hurricanes, or when natural drainage systems are overwhelmed by the water volume."
-        data-image="nhi/Floods.png"
-        data-feature1="Rain Gardens – Gardens that collect rainwater and help prevent flooding by absorbing water and reducing runoff."
-        data-feature2="Elevated Homes – Homes built on stilts or raised foundations to keep them above floodwaters."
-        data-question="How can homes be eco-resilient and prepare against flooding?"
-        data-option1="Build homes on stilts"
-        data-option2="Plant trees"
-        data-option3="Build homes in low-lying areas"
-        data-correct="1"
-        data-badge="badge-flood">
-      <!--  -->
-
-      <!-- Info Wrapper containing both panels -->
-      <div class="info-wrapper" id="infoWrapper">
-        <div class="info-panel" id="infoPanel"></div>
-        <div class="secondary-info-panel" id="secondaryInfoPanel"></div>
+      <h1>Eco-Resilience Explorer</h1>
+      <!-- Badge container for earned badges -->
+      <div id="badgeContainer">
+        <!-- Each badge image has a data-region attribute to match a pin -->
+        <img id="badge-drought" data-region="Droughts" src="log-and-stamps/drought-stamp.svg" alt="Drought Badge">
+        <img id="badge-flood" data-region="Flooding" src="log-and-stamps/flood-stamp.svg" alt="Flood Badge">
+        <img id="badge-fire" data-region="Fires" src="log-and-stamps/fire-stamp.svg" alt="Fire Badge">
+        <img id="badge-lightning" data-region="Lightning Strikes" src="log-and-stamps/lightning-stamp.svg" alt="Lightning Badge">
+        <img id="badge-wind" data-region="Strong Winds" src="log-and-stamps/wind-stamp.svg" alt="Wind Badge">
+        <img id="badge-volcano" data-region="Volcano Eruptions" src="log-and-stamps/volcano-stamp.svg" alt="Volcano Badge">
+        <img id="badge-quake" data-region="Extreme Vibrations" src="log-and-stamps/quake-stamp.svg" alt="Quake Badge">
       </div>
-    </div>
+      <div class="map-container">
+        <!-- Map image -->
+        <img src="map.svg" alt="Map" class="map-image" />
+        <!-- Overlay to shade background -->
+        <div class="overlay"></div>
+
+        <!-- Person pin -->
+        <img
+          src="character.png"
+          class="map-pin person-pin" 
+          style="top: 10%; left: 0%;" 
+          data-region="Hi there!" 
+          data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
+
+        <!-- Natural disaster map pins -->
+        <img
+          src="pins-v3/lightning.svg"
+          class="map-pin" 
+          style="top: 40%; left: 75%;" 
+          data-region="Lightning Strikes" 
+          data-disasters="Lightning happens when a lot of electricity builds up in the sky and then is released all at once. It usually occurs during storms when clouds fill with electricity, but sometimes lightning can happen during a volcanic eruption when ash in the air creates sparks, and it tends to strike the tallest things like trees and buildings."
+          data-image="nhi/Lightning.png"
+          data-feature1 = "Portable Generators – Devices that provide electricity."
+          data-feature2 = "Lightning Rods – Provide lightning a safe path to the ground, drawing it away from nearby tall trees that might catch fire if struck instead."
+          data-question="Lightning tends to strike which of the following?"
+          data-option1="The shortest objects"
+          data-option2="The smallest objects"
+          data-option3="The tallest things like trees and buildings"
+          data-correct="3"
+          data-badge="badge-lightning">
+        <img
+          src="pins-v3/drought.svg"
+          class="map-pin" 
+          style="top: 50%; left: 35%;" 
+          data-region="Droughts" 
+          data-disasters="Droughts are most common in dry areas where it rarely rains, like deserts or regions with long, hot seasons. They can also happen in places with regular rainfall if the rain stops for a long time. Droughts can cause water shortages, crop failures, and wildfires."
+          data-image="nhi/Drought.png"
+          data-feature1 = "Rain Barrels – Rain barrels help collect rainwater from roofs for later use which helps conserve water. "
+          data-feature2 = "Drought-Resistant Plants – Plants like sage, agave, succulents and oak trees that don’t need much watering while also benefiting the community."
+          data-question="Which eco-resilient feature collects rainwater from roofs to use during a drought?"
+          data-option1="A swimming pool"
+          data-option2="A water slide"
+          data-option3="A rain barrel"
+          data-correct="3"
+          data-badge="badge-drought">
+        <img
+          src="pins-v3/earthquake.svg"
+          class="map-pin" 
+          style="top: 40%; left: 50%;" 
+          data-region="Extreme Vibrations" 
+          data-disasters="Extreme vibrations are caused by earthquakes when huge pieces of the Earth, called tectonic plates, move and bump into each other. Earthquakes usually occur along cracks in the Earth, known as fault lines, which are often found near the edges of big oceans."
+          data-image="nhi/Vibrations.png"
+          data-feature1="Shock-Absorbing Foundations – Foundations that work like shock absorbers in a car. "
+          data-feature2="Anchored Buildings – Buildings that are securely attached to the ground."
+          data-question="What is one way buildings can be protected during earthquakes?"
+          data-option1="By installing a lot of windows"
+          data-option2="Use shock absorbing foundations"
+          data-option3="Using heavy roof materials"
+          data-correct="2"
+          data-badge="badge-quake">
+        <img
+          src="pins-v3/fire.svg"
+          class="map-pin" 
+          style="top: 35%; left: 13%;" 
+          data-region="Fires" 
+          data-disasters="Fires can be ignited by lightning strikes, downed power lines from storms, or even volcanic eruptions—especially when the weather is extremely hot and dry. Flames can rapidly spread across forests, grasslands, or other dry areas."
+          data-image="nhi/fires.png"
+          data-feature1="Non-Flammable or Fire-Resistant Building Materials – Buildings made with materials like brick, concrete, and metal instead of wood so they don’t burn easily."
+          data-feature2="Fire-Resistant Landscaping – Creating firebreaks (empty spaces without plants) and using gravel, stone paths, or fire-resistant plants (i.e. agave, succulents, lavender and oak trees) to slow down wildfires. "
+          data-question="What type of building materials are suggested for fire-resistant homes?"
+          data-option1="Bamboo and rubber"
+          data-option2="Glass and plastic"
+          data-option3="Brick, metal and concrete"
+          data-correct="3"
+          data-badge="badge-fire">
+        <img
+          src="pins-v3/volcano.svg"
+          class="map-pin" 
+          style="top: 72%; left: 30%;" 
+          data-region="Volcano Eruptions" 
+          data-disasters="Volcanic eruptions occur when magma from deep inside the Earth builds up pressure and bursts out of a volcano. This release sends hot lava, ash, and gases into the air, sometimes causing damage to nearby areas. Volcanic eruptions can also trigger other hazards like landslides, tsunamis, and earthquakes."
+          data-image="nhi/Volcano.png"
+          data-feature1="Air Purifier - These remove fine ash particles from indoor air during and after an eruption."
+          data-feature2="Fire-Resistant Landscaping – Creating firebreaks (empty spaces without plants) and using gravel, stone paths, or fire-resistant plants (i.e. agave, succulents, lavender and oak trees) to slow down wildfires. "
+          data-question="How do air purifiers help protect people during a volcanic eruption?"
+          data-option1="Removing ash from the air"
+          data-option2="Blocking the hot lava"
+          data-option3="They change the color of the ash"
+          data-correct="1"
+          data-badge="badge-volcano">
+        <img
+          src="pins-v3/wind.svg"
+          class="map-pin" 
+          style="top: 25%; left: 60%;" 
+          data-region="Strong Winds" 
+          data-disasters="Strong winds can occur during severe weather events like thunderstorms, hurricanes, and tornadoes. They are common in coastal areas, especially along the Gulf Coast during hurricanes, and in regions like the central United States, where tornadoes often form."
+          data-image="nhi/Winds.png"
+          data-feature1="Windbreaks – Rows of trees or shrubs that block the wind and protect homes, crops, and soil from erosion."
+          data-feature2="Storm Shelters – Safe places where people can go during tornadoes and hurricanes."
+          data-question="What is one thing you can build in your community to protect against strong winds?"
+          data-option1="A bigger house"
+          data-option2="A tree house"
+          data-option3="A storm shelter"
+          data-correct="3"
+          data-badge="badge-wind">
+        <img
+          src="pins-v3/flood.svg"
+          class="map-pin" 
+          style="top: 63%; left: 58%;" 
+          data-region="Flooding" 
+          data-disasters="Flooding occurs when water covers land that is usually dry, often in low-lying areas, along riverbanks, coastal regions, or urban settings with poor drainage. It can result from heavy rainfall, rapid snowmelt, tsunamis, hurricanes, or when natural drainage systems are overwhelmed by the water volume."
+          data-image="nhi/Floods.png"
+          data-feature1="Rain Gardens – Gardens that collect rainwater and help prevent flooding by absorbing water and reducing runoff."
+          data-feature2="Elevated Homes – Homes built on stilts or raised foundations to keep them above floodwaters."
+          data-question="How can homes be eco-resilient and prepare against flooding?"
+          data-option1="Build homes on stilts"
+          data-option2="Plant trees"
+          data-option3="Build homes in low-lying areas"
+          data-correct="1"
+          data-badge="badge-flood">
+        <!--  -->
+
+        <!-- Info Wrapper containing both panels -->
+        <div class="info-wrapper" id="infoWrapper">
+          <div class="info-panel" id="infoPanel"></div>
+          <div class="secondary-info-panel" id="secondaryInfoPanel"></div>
+        </div>
+      </div>
 
 
     <!--JavaScript-->
