@@ -612,6 +612,10 @@
       const infoPanel = document.getElementById('infoPanel');
       const overlay = document.querySelector('.overlay');
 
+      // Sounds
+      const correctSound = new Audio('correct.mp3');
+      const swapSound = new Audio('swap.mp3');
+
       // Function to check which badges have been earned
       function allBadgesEarned() {
           const badgeImgs = document.querySelectorAll('#badgeContainer img');
@@ -619,6 +623,14 @@
           // Compare the number of keys in the earnedBadges object to the number of badge images
           return Object.keys(earnedBadges).length === badgeImgs.length;
         }
+
+        // Play swap sound on pin mouseover
+        pins.forEach(pin=>{
+            pin.addEventListener('click', () => {
+                swapSound.currentTime = 0;
+                swapSound.play();
+            })
+        })
 
       // Function to update and show the info panels within the wrapper
       function showInfoPanel(pin) {
@@ -739,6 +751,7 @@
             const answer = selected.value;
             const correctAnswer = pin.getAttribute('data-correct');
             if (answer === correctAnswer) {
+                correctSound.play();
               messageContainer.innerText = "Correct! You've earned the badge.";
               messageContainer.style.color = "green";
               // Award the badge if it hasn't been awarded already
