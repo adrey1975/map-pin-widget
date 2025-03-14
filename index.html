@@ -33,8 +33,11 @@
       }
       /* Badge Container Styles */
       #badgeContainer {
-        text-align: center;
-        margin: 20px auto;
+        margin-bottom: 150px;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 15px;
       }
       /* Each badge image starts greyed out */
       #badgeContainer img {
@@ -92,8 +95,9 @@
       .map-container {
         position: relative;
         width: 100%;
-        max-width: 1600px;
+        max-width: 1280px;
         margin: 0 auto;
+        padding: 0 15px;
         border: .2em solid var(--gray-light);
         border-radius: .4em;
         background-color: white;
@@ -398,10 +402,10 @@
       }
 
       /* Media Queries for Responsiveness */
-      @media (max-width: 1400px) {
-        .map-container { max-width: 1200px; }
-        .info-wrapper .info-panel:not(.person-info) { max-width: 1000px; }
-        .info-wrapper .secondary-info-panel { max-width: 1000px; }
+      @media (max-width: 1280px) {
+        .map-container { max-width: 1140px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 100%;}
+        .info-wrapper .secondary-info-panel { max-width: 100%; }
         .map-pin { width: 120px; height: 120px; }
         .person-pin { width: 160px; height: 160px; }
         h1 { font-size: 2.5em; }
@@ -411,10 +415,10 @@
         label { font-size: 1.2em; }
         .image-overlay { font-size: 2em; }
       }
-      @media (max-width: 1200px) {
-        .map-container { max-width: 1000px; }
-        .info-wrapper .info-panel:not(.person-info) { max-width: 800px; transform: translateY(10%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(30%)}
+      @media (max-width: 992px) {
+        .map-container { max-width: 900px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 80%; transform: translateY(10%);}
+        .info-wrapper .secondary-info-panel { max-width: 100%; transform: translateY(15%)}
         .map-pin { width: 100px; height: 100px; }
         .person-pin { width: 140px; height: 140px; }
         h1 { font-size: 2.2em; }
@@ -424,10 +428,10 @@
         label { font-size: 1.1em; }
         .image-overlay { font-size: 1.8em; }
       }
-      @media (max-width: 1000px) {
-        .map-container { max-width: 800px; }
-        .info-wrapper .info-panel:not(.person-info) { max-width: 1000px;  transform: translateY(20%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(40%)}
+      @media (max-width: 768px) {
+        .map-container { max-width: 600px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 100%;  transform: translateY(20%);}
+        .info-wrapper .secondary-info-panel { max-width: 100%; transform: translateY(25%)}
         .map-pin { width: 80px; height: 80px; }
         .person-pin { width: 120px; height: 120px; }
         h1 { font-size: 2em; }
@@ -437,10 +441,10 @@
         label { font-size: 1em; }
         .image-overlay { font-size: 1.6em; }
       }
-      @media (max-width: 800px) {
-        .map-container { max-width: 600px; }
-        .info-wrapper .info-panel:not(.person-info) { max-width: 1200px; transform: translateY(30%)}
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(50%)}
+      @media (max-width: 576px) {
+        .map-container { max-width: 400px; }
+        .info-wrapper .info-panel:not(.person-info) { max-width: 100%; transform: translateY(30%);}
+        .info-wrapper .secondary-info-panel { max-width: 100%; transform: translateY(35%)}
         .map-pin { width: 60px; height: 60px; }
         .person-pin { width: 100px; height: 100px;}
         .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
@@ -451,20 +455,7 @@
         label { font-size: 0.9em; }
         .image-overlay { font-size: 1.4em; }
       }
-      @media (max-width: 500px) {
-        .map-container { max-width: 400px; transform: translateY(40%)}
-        .info-wrapper .info-panel:not(.person-info) { max-width: 1400px; }
-        .info-wrapper .secondary-info-panel { max-width: 250px; transform: translateY(60%)}
-        .map-pin { width: 40px; height: 40px; }
-        .person-pin { width: 80px; height: 80px; }
-        .info-wrapper .person-info { max-width: 1000px; transform: translate(5%);}
-        h1 { font-size: 1.8em; }
-        h2 { font-size: 1.2em; }
-        h3 { font-size: 1em; }
-        p { font-size: 0.8em; }
-        label { font-size: 0.9em; }
-        .image-overlay { font-size: 1.4em; }
-      }
+
     </style>
 
     
@@ -726,7 +717,7 @@
           const pinTopPercent = parseFloat(pin.style.top);
           const pinLeftPercent = parseFloat(pin.style.left);
           infoWrapper.style.top = pinTopPercent + '%';
-          infoWrapper.style.left = (pinLeftPercent + 10) + '%';
+          infoWrapper.style.left = (pinLeftPercent + 11) + '%';
           infoWrapper.style.transform = 'none';
         } else {
           infoWrapper.style.top = '50%';
