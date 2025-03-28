@@ -624,7 +624,7 @@
           data-feature2="Elevated Homes – Homes built on stilts or raised foundations to keep them above floodwaters."
           data-question="How can homes be eco-resilient and prepare against flooding?"
           data-option1="Build homes on stilts"
-          data-option2="Plant trees"
+          data-option2="Give your home a fresh coat of paint"
           data-option3="Build homes in low-lying areas"
           data-correct="1"
           data-badge="badge-flood">
@@ -771,18 +771,31 @@
           });
         }
 
-        // Attach click event on image container to reveal the secondary panel
+        // Attach click event on image container to toggle the secondary panel
         const imageContainer = infoPanel.querySelector('.image-container');
         if (imageContainer) {
           imageContainer.style.cursor = 'pointer';
           imageContainer.addEventListener('click', (e) => {
             e.stopPropagation();
             const secPanel = document.getElementById('secondaryInfoPanel');
-            secPanel.innerHTML = `<p><b>Eco-Resilient Features:</b> ${region}</p>
-              <p><b>1.</b> ${pin.getAttribute('data-feature1')}</p>
-              <p><b>2.</b> ${pin.getAttribute('data-feature2')}</p>`;
-            secPanel.style.display = 'block';
-            swapSound.play();
+            const overlayElement = imageContainer.querySelector('.image-overlay');
+            // Toggle: if the secondary panel is visible, hide it and restore overlay
+            if (secPanel.style.display === 'block') {
+              secPanel.style.display = 'none';
+              if (overlayElement) {
+                overlayElement.style.display = 'flex'; // adjust if needed based on your styling
+              }
+            } else {
+              // Hide the overlay and show the secondary panel
+              if (overlayElement) {
+                overlayElement.style.display = 'none';
+              }
+              secPanel.innerHTML = `<p><b>Eco-Resilient Features:</b> ${region}</p>
+               <p><b>1.</b> ${pin.getAttribute('data-feature1')}</p>
+                <p><b>2.</b> ${pin.getAttribute('data-feature2')}</p>`;
+              secPanel.style.display = 'block';
+              swapSound.play();
+            }
           });
         }
       
@@ -877,10 +890,19 @@
         }
       });
 
-      // Hide secondary panel if clicking image overlay a second time
+        // Hide secondary panel if clicking image overlay a second time
+        // Hide secondary panel if clicking outside the image container, and restore the overlay
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.image-container')) {
-            document.getElementById('secondaryInfoPanel').style.display = 'none';
+              document.getElementById('secondaryInfoPanel').style.display = 'none';
+              // Restore the image overlay
+              const imageContainer = infoPanel.querySelector('.image-container');
+              if (imageContainer) {
+                const overlayElement = imageContainer.querySelector('.image-overlay');
+                if (overlayElement) {
+                  overlayElement.style.display = 'flex'; // or 'block' depending on your styling
+                }
+              }
             }
         });
 
