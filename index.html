@@ -39,10 +39,14 @@
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* centers items vertically */
+        flex-wrap: wrap; /* allows badges to wrap to the next line on smaller screens */
       }
       /* Each badge image starts greyed out */
       #badgeContainer img {
-        width: 150px;
+        width: 165px;
         margin: 5px;
         filter: grayscale(100%);
         transition: filter 0.3s;
@@ -482,13 +486,13 @@
       <!-- Badge container for earned badges -->
       <div id="badgeContainer">
         <!-- Each badge image has a data-region attribute to match a pin -->
-        <img id="badge-drought" data-region="Droughts" src="log-and-stamps/drought-stamp.svg" alt="Drought Badge">
-        <img id="badge-flood" data-region="Flooding" src="log-and-stamps/flood-stamp.svg" alt="Flood Badge">
-        <img id="badge-fire" data-region="Fires" src="log-and-stamps/fire-stamp.svg" alt="Fire Badge">
-        <img id="badge-lightning" data-region="Lightning Strikes" src="log-and-stamps/lightning-stamp.svg" alt="Lightning Badge">
-        <img id="badge-wind" data-region="Strong Winds" src="log-and-stamps/wind-stamp.svg" alt="Wind Badge">
-        <img id="badge-volcano" data-region="Volcano Eruptions" src="log-and-stamps/volcano-stamp.svg" alt="Volcano Badge">
-        <img id="badge-quake" data-region="Extreme Vibrations" src="log-and-stamps/quake-stamp.svg" alt="Quake Badge">
+        <img id="badge-drought" data-region="Droughts" src="new-pins/drought-badge.svg" alt="Drought Badge">
+        <img id="badge-flood" data-region="Flooding" src="new-pins/flood-badge.svg" alt="Flood Badge">
+        <img id="badge-fire" data-region="Fires" src="new-pins/fire-badge.svg" alt="Fire Badge">
+        <img id="badge-lightning" data-region="Lightning Strikes" src="new-pins/lightning-badge.svg" alt="Lightning Badge">
+        <img id="badge-wind" data-region="Strong Winds" src="new-pins/wind-badge.svg" alt="Wind Badge">
+        <img id="badge-volcano" data-region="Volcano Eruptions" src="new-pins/volcano-badge.svg" alt="Volcano Badge">
+        <img id="badge-quake" data-region="Extreme Vibrations" src="new-pins/eq-badge.svg" alt="Quake Badge">
       </div>
       <div class="map-container">
         <!-- Map image -->
@@ -506,7 +510,7 @@
 
         <!-- Natural disaster map pins -->
         <img
-          src="pins/lightning.svg"
+          src="new-pins/lightning-pin.svg"
           class="map-pin" 
           style="top: 40%; left: 75%;" 
           data-region="Lightning Strikes" 
@@ -521,7 +525,7 @@
           data-correct="3"
           data-badge="badge-lightning">
         <img
-          src="pins/drought.svg"
+          src="new-pins/drought-pin.svg"
           class="map-pin" 
           style="top: 50%; left: 35%;" 
           data-region="Droughts" 
@@ -536,7 +540,7 @@
           data-correct="3"
           data-badge="badge-drought">
         <img
-          src="pins/earthquake.svg"
+          src="new-pins/eq-pin.svg"
           class="map-pin" 
           style="top: 40%; left: 50%;" 
           data-region="Extreme Vibrations" 
@@ -551,7 +555,7 @@
           data-correct="2"
           data-badge="badge-quake">
         <img
-          src="pins/fire.svg"
+          src="new-pins/fire-pin.svg"
           class="map-pin" 
           style="top: 35%; left: 13%;" 
           data-region="Fires" 
@@ -566,7 +570,7 @@
           data-correct="3"
           data-badge="badge-fire">
         <img
-          src="pins/volcano.svg"
+          src="new-pins/volcano-pin.svg"
           class="map-pin" 
           style="top: 72%; left: 30%;" 
           data-region="Volcano Eruptions" 
@@ -581,7 +585,7 @@
           data-correct="1"
           data-badge="badge-volcano">
         <img
-          src="pins/wind.svg"
+          src="new-pins/wind-pin.svg"
           class="map-pin" 
           style="top: 25%; left: 60%;" 
           data-region="Strong Winds" 
@@ -596,7 +600,7 @@
           data-correct="3"
           data-badge="badge-wind">
         <img
-          src="pins/flood.svg"
+          src="new-pins/flood-pin.svg"
           class="map-pin" 
           style="top: 63%; left: 58%;" 
           data-region="Flooding" 
