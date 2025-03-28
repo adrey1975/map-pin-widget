@@ -195,6 +195,13 @@
         text-align: left;
       }
 
+      .checkmark-overlay {
+        position: absolute;
+        width: 40px;      /* Adjust as needed */
+        height: 40px;     /* Adjust as needed */
+        z-index: 1000;    /* Ensure it appears above the pin */
+      }
+
       /* Pin Styling */
       .map-pin {
         position: absolute;
@@ -240,14 +247,21 @@
         color: var(--off-white);
         font-size: 2.5em;
         text-align: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .image-container:hover .image-overlay {
         opacity: 1;
+        transition: none;
       }
-      .image-container:hover .info-panel-image {
+      .image-overlay span {
+        font-size: 1.5em;
+      }
+
+      .image-container .info-panel-image {
         filter: grayscale(50%);
+        transition: filter 0.3s ease;
+      }
+
+      /* On hover, darken the image further */
+      .image-container:hover .info-panel-image {
+        filter: grayscale(75%) brightness(70%);
       }
 
       /* Arrow styling for info panels */
@@ -433,7 +447,7 @@
         h3 { font-size: 1.3em; }
         p { font-size: 1.1em; }
         label { font-size: 1.2em; }
-        .image-overlay { font-size: 2em; }
+        .image-overlay span { font-size: 1.2em; } 
       }
       @media (max-width: 992px) {
         .map-container { max-width: 900px; }
@@ -446,7 +460,7 @@
         h3 { font-size: 1.2em; }
         p { font-size: 1em; }
         label { font-size: 1.1em; }
-        .image-overlay { font-size: 1.8em; }
+        .image-overlay span{ font-size: 1em; }
       }
       @media (max-width: 768px) {
         .map-container { max-width: 600px; }
@@ -459,7 +473,7 @@
         h3 { font-size: 1.1em; }
         p { font-size: 0.9em; }
         label { font-size: 1em; }
-        .image-overlay { font-size: 1.6em; }
+        .image-overlay span{ font-size: .8em; }
       }
       @media (max-width: 576px) {
         .map-container { max-width: 400px; }
@@ -473,7 +487,7 @@
         h3 { font-size: 1em; }
         p { font-size: 0.8em; }
         label { font-size: 0.9em; }
-        .image-overlay { font-size: 1.4em; }
+        .image-overlay span{ font-size: .5em; }
       }
 
     </style>
@@ -506,7 +520,7 @@
           class="map-pin person-pin" 
           style="top: 10%; left: 0%;" 
           data-region="Hi there!" 
-          data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> for each home you help! Click <b>'Begin'</b> to start.">
+          data-disasters="You’ve been recruited to help homes prepare for natural hazards! Explore the map to learn about different hazards and discover ways to protect homes from them. Collect a stamp in your <b>Resilience Logbook</b> at the top for each home you help! Click <b>'Begin'</b> to start.">
 
         <!-- Natural disaster map pins -->
         <img
@@ -799,6 +813,25 @@
                   badgeImg.style.filter = 'none';
                 }
               }
+              // Add a green check mark overlay to the pin if not already added
+             if (!pin.dataset.completed) {
+                const checkmark = document.createElement('img');
+                checkmark.src = 'green-check.svg'; // Replace with your actual check mark icon path
+                checkmark.classList.add('checkmark-overlay');
+                
+                // Position the check mark relative to the map container
+                const mapContainer = pin.parentElement;
+                const containerRect = mapContainer.getBoundingClientRect();
+                const pinRect = pin.getBoundingClientRect();
+                
+                // Position it at the top-right of the pin (adjust the -30 value if needed)
+                checkmark.style.top = (pinRect.top - containerRect.top) + 'px';
+                checkmark.style.left = (pinRect.left - containerRect.left + pinRect.width - 30) + 'px';
+                
+                mapContainer.appendChild(checkmark);
+                pin.dataset.completed = "true";  // Mark as completed so we don't add multiple overlays
+             }
+
               // Remove the submit button so the user can't answer again
               const submitButton = document.getElementById('submitAnswer');
               if (submitButton) {
